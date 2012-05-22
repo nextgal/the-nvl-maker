@@ -1,0 +1,31 @@
+function HistoryLayer_config_Custom()
+{
+	;marginL = 12;
+	;marginR = 12;
+	;marginT = 12;
+	;marginB = 12;
+	
+	;historyColor = 0xffffff;
+
+	;controlHeight = 20;
+	
+	;prevPageButtonX = 0;
+	;prevPageButtonY = 0;
+	
+	;nextPageButtonX = 0;
+	;nextPageButtonY = 0;
+	
+	;prevLineButtonX = 0;
+	;prevLineButtonY = 0;
+	
+	;nextLineButtonX = 0;
+	;nextLineButtonY = 0;
+	
+	;scrollbarX = 0;
+	;scrollbarY = 0;
+	;scrollbarLength = 0;
+	
+	;closeButtonX = 0;
+	;closeButtonY = 0;
+
+}
