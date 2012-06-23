@@ -15,4 +15,6 @@
 
 ±³¾°£º¡º¤°¤Ã¤¿¤ê¤Ë¤ã¤ó¤³¡»http://guttari8.sakura.ne.jp/
 
+ÒôÀÖ£º¡ºPianos DauGe¡»http://pianosdauge.org/BGM/list.html
+
 ÒôÐ§£º¡º»ØÕ¶ÃÎÀÈ¡»http://kaizanmurou.main.jp/
