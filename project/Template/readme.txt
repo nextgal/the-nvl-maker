@@ -13,7 +13,9 @@
 
 -模板工程用素材-
 
-背景：『ぐったりにゃんこ』http://guttari8.sakura.ne.jp/
+背景：『きまぐれアフター.』http://www5d.biglobe.ne.jp/~gakai/
+
+人物：『ComiPo!』http://www.comipo.com/en/index.html
 
 音乐：『Pianos DauGe』http://pianosdauge.org/BGM/list.html
 
