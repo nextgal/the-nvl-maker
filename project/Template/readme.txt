@@ -1,6 +1,6 @@
 -使用本模板制作出来的游戏或其他作品-
 
-必须署名：使用THE NVL Maker（基于吉里吉里/KAG）制作 http://nvlmaker.codeplex.com
+必须署名：使用THE NVL Maker（基于吉里吉里/KAG）制作 http://www.nvlmaker.net/
 
 无须开源：对《THE NVL Maker》编辑器所做的修改和二次发布必须开源，游戏则无此规定
 
