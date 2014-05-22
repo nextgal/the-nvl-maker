@@ -1,0 +1,338 @@
+@charset "Shift_Jis";
+
+/*---- F034 -----*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	scrollbar-track-color: #FFF;
+	scrollbar-face-color: #FFF;
+	scrollbar-shadow-color: #9BD7D5;
+	scrollbar-darkshadow-color: #FFF;
+	scrollbar-highlight-color: #FFF;
+	scrollbar-3dlight-color: #9BD7D5;
+	scrollbar-arrow-color: #9BD7D5;
+}
+
+	* html {
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+body {
+	line-height: 1.5;
+	color: #7F5F47;
+	font-size: 83.3%;
+	font-family:"»ªÎÄ¿¬Ìå", "¿¬Ìå", "Ó×Ô²", "Î¢ÈíÑÅºÚ", "ºÚÌå";
+	background: #FFF url(css_lace009.gif) repeat-x top left fixed;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link {
+	color: #66C4C0;
+}
+
+a:visited {
+	color: #66C4C0;
+}
+
+a:hover {
+	color: #C39DC7;
+}
+
+a:active {
+	color: #C39DC7;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 {
+	padding-top: 40px;
+	color: #9BD7D5;
+	font-size: 180%;
+
+}
+	h1 a:link {color: #9BD7D5;}
+	h1 a:visited {color: #9BD7D5;}
+
+h2 {
+	font-size: 100%;
+}
+
+h3 {
+	padding-left: 30px;
+	border-bottom: 2px dotted #D7C594;
+	color: #F1A6A6;
+	font-size: 131%;
+	background: url(p_crown003.gif) no-repeat center left;
+}
+
+h4, h5, h6 {
+	font-size: 100%;
+}
+
+p {
+	margin: 0 0 1em 0;
+}
+
+br {
+	letter-spacing: normal;
+}
+
+em {
+	border-bottom: 2px solid #F1A6A6;
+	font-style: normal;
+}
+
+strong {
+	font-weight: bold;
+}
+
+big {
+	font-size: 131%;
+}
+
+small {
+	font-size: 77%;
+}
+
+ins {
+	text-decoration: underline;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+b {
+	font-weight: bold;
+}
+
+i {
+	font-style: oblique;
+}
+
+address, cite {
+	font-style: normal;
+}
+
+code {
+	font-family: monospace;
+}
+
+table {
+	margin: 0 0 1em 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th,td {
+	padding: 2px 5px;
+	border: 1px solid #D7C594;
+}
+
+hr {
+	display: none;
+}
+	.line {
+		margin-top: 30px;
+	}
+
+	.clears {
+		clear: both;
+		padding: 0 0 1em 0;
+	}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+	.img_right {
+		float: right;
+		margin: 0 0 0 10px;
+		padding: 5px;
+		border: 1px solid #D7C594;
+		background: #FFF;
+	}
+
+	.img_left {
+		float: left;
+		margin: 0 10px 0 0;
+		padding: 5px;
+		border: 1px solid #D7C594;
+		background: #FFF;
+	}
+
+blockquote {
+	margin: 0 0 1em 30px;
+	padding: 5px 10px;
+	border: 2px dotted #F1A6A6;
+}
+
+input, select, textarea {
+	margin: 2px 0;
+	width: 40%;
+	border: 1px solid #D7C594;
+	color: #7F5F47;
+	font-size: 100%;
+	font-family: Verdana, "ƒqƒ‰ƒMƒmŠpƒS Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "‚l‚r ‚oƒSƒVƒbƒN", "MS PGothic", Sans-Serif;
+	background: #FFF;
+}
+
+textarea {
+	width: 70%;
+}
+
+input.button {
+	width: 90px;
+	vertical-align: middle;
+}
+
+div#out {
+	margin: 100px 40px 0 40px;
+}
+
+div#out_sub {
+	margin: 50px 30px 0 30px;
+}
+
+div#header {
+	margin-top: 80px;
+	text-align: center;
+	background: url(css_heart005.gif) no-repeat center top;
+}
+
+div.write {
+	margin: 0 auto;
+	padding: 20px;
+}
+
+div.write ul, div.write ol {
+	margin: 0 0 1em 15px;
+}
+
+div.write ul li {
+	list-style: circle inside;
+}
+
+div.write ol li {
+	list-style: decimal;
+	margin: 0 0 0 20px;
+}
+
+div.write ul.parallel {
+	margin: 0;
+}
+
+ul.parallel li {
+	display: inline;
+	list-style: none;
+}
+
+div.write ul.parallel li {
+	padding: 0;
+	background: none;
+}
+
+ul.parallel li img {
+	margin: 0 2px 3px 0;
+}
+
+dl {
+	margin: 0 0 1em 0;
+}
+
+dt {	}
+
+dd {
+	margin: 0 0 5px 15px;
+	padding: 0 0 0 5px;
+	border-left: 2px dotted #F1A6A6;
+}
+
+dl.parallel dt {
+	width: 120px;
+	line-height: 1.6;
+}
+
+dl.parallel dd {
+	margin: -1.6em 0 5px 120px;
+	padding: 0 0 0 15px;
+}
+
+p.info {
+	margin: 0 0 1em 0;
+	padding: 2px 10px 0 10px;
+	height: 80px;
+	overflow: auto;
+}
+
+.deco {
+	line-height: 22px;
+	background: url("line001.gif") left top;
+}
+
+img.deco {
+	padding: 5px;
+	border: 1px solid #D7C594;
+	background: #FFF;
+}
+
+.page_navi li {
+	list-style: none;
+	margin: 0 20px;
+	text-align: right;
+}
+
+div#menu {
+	text-align: center;
+}
+
+div#menu li {
+	list-style: none;
+}
+
+div#menu li a {
+	color: #B2A379;
+	font-size: 131%;
+}
+
+div#footer {
+	text-align: center;
+}
+
+div#footer li {
+	display: inline;
+	list-style: none;
+	margin-right: 20px;
+}
+
+div#footer li a:link, div#footer li a:visited {
+	padding-left: 30px;
+	background: url(p_crown003.gif) no-repeat center left;
+}
+
+#copy {
+	position: absolute;
+	bottom: 5px;
+	left: 70px;
+}
+
+#copy a {
+	font-size: 11px;
+	font-family: Arial, Helvetica, Sans-Serif;
+}
+
+#entrance {
+	margin: 50px auto 0 auto;
+	width: 60%;
+}

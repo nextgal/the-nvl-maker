@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3>KAGEX1指令文档</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<p class="deco">
+                Title: 吉里吉里/KAGEX 相关文档<br>
+                Author: 合資会社ワムソフト 渡邊剛<br>
+                Translator: VariableD
+            </p>
+            
+			<p>●吉里吉里/KAGEX 概要</p>
+			<p>KAGEX 对吉里吉里/KAG 在 layer 方面进行了大量的机能扩张。</p>
+			<p>而 KAG 本体的基本功能完整保留。关于 KAG 的详细说明，</p>
+			<p>http://devdoc.kikyou.info/tvp/docs/kag3doc/contents/</p>
+			<p>请参考以上页面。</p>
+			<p>●文件夹组成</p>
+			<p>krkr.exe                吉里吉里主程序<br>
+			  plugin/                        插件</p>
+			<p>※插件文件夹中，实际上需要的是以下两个文件<br>
+			  layerExImage.dll<br>
+			  wuvorbis.dll</p>
+			<p>savedata/                存档文件夹</p>
+			<p>data/                        游戏资料夹<br>
+			  system/                系统<br>
+			  bgimage/        背景图片<br>
+			  bgm/                BGM档<br>
+			  fgimage/        前景图片<br>
+			  image/                其他图片<br>
+			  others/                其他档案<br>
+			  rule/                画面切换用规则图片<br>
+			  scenario/        剧本档<br>
+			  sound/                音效档<br>
+			  video/                影片文件<br>
+			  startup.tjs        吉里吉里起动文件<br>
+			  envinit.tjs        系统定义文件（KAG技能扩张用）</p>
+			<p>※游戏资料夹部分，具体文件是如何放置的并没有关系。</p>
+			<p>●扩张技能说明</p>
+			<p>◇追加层</p>
+			<p>◆增加特殊层</p>
+			<p>加入了以下的２层全画面层。</p>
+			<p>stage        （舞台层）深度位于背景层之上，前景层之下。<br>
+			  event        （事件层）深度位于前景层之上，消息层之下。<br>
+			  <br>
+			  ※实际上，前景层由于“水平”这一概念的增加，也可能显示在事件层之上。</p>
+			<p>本来的 KAG 系统「背景」即是使用 base 层显示， base 层由于<br>
+			  吉里吉里本身的设定限制，无法自由移动。<br>
+			  因此，KAGEX 加入了为实现背景卷动效果的特殊层（舞台层）。</p>
+			<p>此外，为「事件画面」的显示方便，前景层之上，增加了专门的事件层。</p>
+			<p>相比原版的KAG，KAGEX 的层构造变为如下图所示</p>
+			<p>-- -- -- --  messages (KAG消息层）<br>
+			  -- -- -- --  layers (KAG前景层:level5～8)<br>
+			  -----------  event<br>
+			  -- -- -- --  layers (KAG前景层:level0～4)<br>
+			  -----------  stage<br>
+			  -----------  base（KAG背景层）</p>
+			<p>◆前景层追加水平（level）概念</p>
+			<p>KAG 本来的前景层，是按照其编号决定显示顺位的。<br>
+			  KAGEX 则增加了「level」这一概念，由level单位来决定显示顺位。</p>
+			<p>・「level」的值越小，则层的显示顺位越低。<br>
+			  ・在同一「level」值的层中，可以把层移动到「最前排」「最后排」。</p>
+			<p>◆layopt (扩张)</p>
+			<p>stage / event 和前景层一样，可以用 layopt 指令进行操作。<br>
+			  layopt 指令则增加了以下几个属性。</p>
+			<p>属性<br>
+			  rotate  角度<br>
+			  zoomx   横方向放大率<br>
+			  zoomy   纵方向放大率<br>
+			  zoom    放大率<br>
+			  afx     旋转・放大的原点X坐标 center/left/right <br>
+			  或使用该点距离图片左上点的相对坐标。<br>
+			  afy     旋转・放大的原点Y坐标 center/top/bottom<br>
+			  或使用该点距离图片左上点的相对坐标。<br>
+			  type    合成模式<br>
+			  ※http://devdoc.kikyou.info/tvp/docs/kr2doc/contents/index.html<br>
+			  reset   层动作与层属性的初期化<br>
+			  ※opacity 和 type 则重设为图象读入时的设定</p>
+			<p>◆laylevel (新增)</p>
+			<p>前景层显示水平设定。</p>
+			<p>属性<br>
+			  layer (指定设定的前景层等)<br>
+			  page (省略時默认为 fore) <br>
+			  level  表示 level<br>
+			  表示level：layfront/layback 的分组对象（level值相同的层视为同一组）。<br>
+			  表示level越大，显示顺位越靠前。</p>
+			<p>◆layfront (新增)</p>
+			<p>指定层移动到同一level值的所有层中的最前排</p>
+			<p>属性<br>
+			  layer (指定设定的前景层等)<br>
+			  page (省略時默认为 fore) </p>
+			<p>◆layback (新增)</p>
+			<p>指定层移动到同一level值的所有层中的最后排</p>
+			<p>属性<br>
+			  layer (指定设定的前景层等)<br>
+			  page (省略時默认为 fore) </p>
+			<p>◆clearlayers (新增)</p>
+			<p>清除所有层内容，停止执行。</p>
+			<p>属性<br>
+			  page 的表或里</p>
+			<p>◆action (新增)</p>
+			<p>针对 stage / event 及前景层增加的指令，<br>
+			  设定层的自动动作效果</p>
+			<p>属性<br>
+			  layer 指定需要操作的层（前景/stage/event)<br>
+			  page 指定操作的是层的表页或里页<br>
+			  module 动作效果指定<br>
+  <br>
+			  ※一些动作效果拥有其独有的属性。<br>
+			  具体动作效果的详细说明，请参考 action.txt。</p>
+			<p>◆stopaction (新增)</p>
+			<p>停止指定层的动作。<br>
+			  不指定层的情况下，停止所有层的动作效果。</p>
+			<p>属性<br>
+			  layer 指定需要操作的层（前景/stage/event)<br>
+			  page 指定操作的是层的表页或里页</p>
+			<p>◆wact (新增)</p>
+			<p>等待指定层的动作效果结束。<br>
+			  不指定层的情况下，等待全部层动作结束。</p>
+			<p>属性<br>
+			  layer 指定需要操作的层（前景/stage/event)<br>
+			  page 指定操作的是层的表页或里页<br>
+			  canskip 値 true(默认) 或者 false<br>
+			  true 的情况下可以点击跳过动画效果。</p>
+			<p>◆button (扩张)</p>
+			<p>可以单独指定按钮各个点击状态的图片。</p>
+			<p>属性<br>
+			  normal        通常时的图片<br>
+			  over    鼠标移动到按钮上时的图片        省略则使用与 normal 同一张图片<br>
+			  on        点下鼠标时的图片                省略则使用与 over 同一张图片<br>
+			  focus        focus时的图片                        省略时则使用与 focus 同一张图片(译注：带focus的按钮俺没有用过，不清楚)</p>
+			<p>◆slider (新增)</p>
+			<p>在消息层上设置滑动槽（slider bar）。</p>
+			<p>属性<br>
+			  exp                commit 时执行的 TJS 式<br>
+			  bgcolor                背景色<br>
+			  opacity                背景透明度<br>
+			  value                连动变数名。指定后的情况<br>
+			  (1)指定的变数的值，作为滑动槽的初期值<br>
+			  (2)滑动槽移动时，变数相应改变<br>
+			  position        初期值<br>
+			  ※onchange        (经实验似乎未实装)当滑动槽被拖动时执行的TJS式<br>
+			  ※min           指定允许设定的最小值，默认为0<br>
+			  ※max           指定允许设定的最大值，默认为100</p>
+			<p> base                背景画像名。<br>
+			  指定了背景图片的情况下， width 和 height 用于设定背景图片的大小<br>
+			  width                背景宽<br>
+			  height                背景高<br>
+			  tab                        滑动按钮图片（一起设定) normal / on / over 以此顺序排列（译注：类似普通按钮的graphic……吧？）<br>
+			  normal                滑动按钮通常时的图片（分离）<br>
+			  over                滑动按钮鼠标移动到按钮上时的图片（分离）<br>
+			  on                滑动按钮点下鼠标时的图片（分离）</p>
+			<p>◆sysbutton (新增)</p>
+			<p>在消息层上( message0 )设置系统按钮。</p>
+			<p>属性<br>
+			  normal                通常时的图片<br>
+			  over            鼠标移动到按钮上时的图片        省略则使用与 normal 同一张图片<br>
+			  on                点下鼠标时的图片                省略则使用与 over 同一张图片<br>
+			  focus                focus时的图片                        省略时则使用与 focus 同一张图片</p>
+			<p> graphic                按钮图片（一起设定）<br>
+			  graphickey         按钮图片透明色<br>
+			  x                        表示位置<br>
+			  y                        表示位置<br>
+			  hint                对按钮的注释（移动到按钮上后显示浮动小说明框）<br>
+			  exp                按钮按下时执行的 TJS 式<br>
+			  clickse                按钮按下时的SE（音效）<br>
+			  clicksebuf        按钮按下时的SE 使用声道<br>
+			  onenter                鼠标移到按钮上时（enter时） 执行的 TJS 式<br>
+			  enterse                enter时的 SE<br>
+			  entersebuf        enter时的 SE 使用声道<br>
+			  onleave                鼠标从按钮上移开时（leave时） 执行的 TJS 式<br>
+			  leavese                leave时的 SE<br>
+			  leavesebuf        leave时的 SE 使用声道<br>
+			  recthit                同一般按钮的属性<br>
+			  enabled                系统按钮有效<br>
+			  disabled        系统按钮无效<br>
+			  译注：以下两个属性非常有用，然而文档里没有提到，于是自行加上了<br>
+			  ※name          每个系统按钮必须指定的属性，用于区别系统按钮（没有这个属性的话根本就会一直出错……|||）<br>
+			  ※noStable      为真时，在“行走中”（例如切换效果中，自动前进中时），按钮也有效，为假时，和普通按钮相同</p>
+			<p>◆csysbutton (新增)</p>
+			<p>清除已定义的系统按钮</p>
+			<p>◆timeout (新增)</p>
+			<p>当前操作的消息层，增加timeout处理。（制作限时选项等时使用，用在[s]之前）</p>
+			<p>属性<br>
+			  time         等待玩家选择的限制时间<br>
+			  storage         超时的情况下跳转到的剧本档<br>
+			  target         超时的情况下跳转到的标签</p>
+			<p>◆click (新功能)</p>
+			<p>增加在当前消息层点击鼠标左键（click）的处理。可以设定在没有按钮/选项的地方点下左键时，将执行的操作。</p>
+			<p>属性<br>
+			  storage                click时跳转到的文件名<br>
+			  target                click时跳转到的标签名<br>
+			  exp                click实行时执行的TJS式<br>
+			  cickse                click实行时播放的SE<br>
+			  clicksebuf        click实行时播放的SE编号</p>
+			<p>◆beginskip (新功能)</p>
+			<p>鼠标点击的情况下，到 endskip 标志为止的脚本，将会进行強制略过处理。<br>
+			  beginskip 到 endskip 为止的部分，请不要加入skip相关的操作，因为可能会造成错误。<br>
+			  ※假如使用jump或其他指令跳到了别的剧本档，skip将自动解除。</p>
+			<p>beginskip 不能进行嵌套。<br>
+			  嵌套的话会出现错误。</p>
+			<p>◆endskip (新功能)</p>
+			<p>表示特殊略过模式的停止标记。<br>
+		  </p>
+			<p>◇Sound Rack 扩张</p>
+			<p>◆声音控制全部</p>
+			<p>音量控制方法</p>
+			<p>　直接指定<br>
+			  KAG 的 [bgmopt] [seopt] 指令，可以直接控制音量大小。<br>
+  <br>
+			  渐变指定<br>
+			  KAG 的 [fadebgm] [fadese] 指令，可以平滑地调整播放中音乐的音量大小。</p>
+			<p> 循环（loop）的控制<br>
+			  请使用吉里吉里的LoopTuner工具。<br>
+			  http://devdoc.kikyou.info/tvp/docs/kr2doc/contents/LoopTuner.html</p>
+			<p> 使用该工具，例如<br>
+			  在 bgm01.ogg 对应的 bgm01.ogg.sli 内，设定循环效果。<br>
+			  制作这样的循环控制文件。吉里吉里将根据sli文件执行循环效果。</p>
+			<p> 从任意位置开始播放（扩张机能）<br>
+			  (1) 使用LoopTuner在音乐档中设定标签<br>
+			  (2) playbgm / playse / fadeinbgm / fadeinse 中，用 start 属性指定开始播放的标签</p>
+			<p>◆playbgm/playse/fadeinbgm/fadeinse (扩张)</p>
+			<p>从任意位置开始播放</p>
+			<p>属性<br>
+			  start  指定开始播放的标签。使用在LoopTuner中设定的标签名。</p>
+			<p>◆fadepausebgm (新命令)</p>
+			<p>BGM 音量渐小，直到暂停</p>
+			<p>属性<br>
+			  time        時間(ms単位)<br>
+			  fadeout 用时，以 ms （毫秒）为单位指定。<br>
+			  例如 time 设为 3000 ，则音乐在 3 秒内淡出。</p>
+			<p>◆setbgmstop (新命令)</p>
+			<p>指定BGM 播放完时执行的动作。<br>
+			  BGM 改变时，这个设定自动无效。</p>
+			<p>属性<br>
+			  storage                BGM 播放完后跳转到的剧本档<br>
+			  target                BGM 播放完后跳转到的标签<br>
+			  exp                BGM 播放完后执行的tjs式</p>
+			<p>◆clearbgmstop (新命令)</p>
+			<p>清除 setbgmstop 的设定。<br>
+		  </p>
+			<p>◆setbgmlabel (新命令)</p>
+			<p>BGM 播放时，播放到BGM内建标记时进行的动作，可登陆多个标签。<br>
+			  BGM 改变时，这个设定自动无效。</p>
+			<p>属性<br>
+			  name                标记名<br>
+			  storage                通过标记时跳转到的剧本档<br>
+			  target                通过标记时跳转到的标签<br>
+			  exp                通过标记时执行的tjs式 </p>
+			<p>◆clearbgmlabel (新命令)</p>
+			<p>清除 setbgmlabel  的设定。<br>
+		  </p>
+			<p>◇表示系扩张</p>
+			<p>◆linemode (扩张)</p>
+			<p>KAG 换行模式的切换。<br>
+			  使用本指令的话，在消息窗口样式的作品中，<br>
+			  [l]或[cm]之类的指令，可以省略。</p>
+			<p>属性<br>
+			  mode        line 或者 page<br>
+			  未指定时，按照 KAG 默认设定。</p>
+			<p>换行: 在输入文本时直接使用Enter换行。<br>
+			  空行: 在文本段落间空一行。<br>
+			  可以实现用Enter换行的效果和使用了[r]一样。</p>
+			<p>line 的情况:<br>
+			  换行：相当于执行[l]（等待）<br>
+			  空行：無視<br>
+			  [p] ：通常机能</p>
+			<p>page 的情况:<br>
+			  换行：[p] ＋自动消去文字<br>
+			  空行：無視</p>
+			<p>vn 的情况:<br>
+			  换行：相当于执行[l]（等待）<br>
+			  空行:[p] ＋自动消去文字</p>
+			<p>tex 的情况:<br>
+			  换行:無視<br>
+			  空行:[p] ＋自动消去文字</p>
+			<p>free 的情况:<br>
+			  换行:换行<br>
+			  空行:[p] ＋自动消去文字</p>
+			<p>自动消去文字指的是「下一行文本开始显示时」执行类似 [er] 的效果。<br>
+			  想要实现 [p] 之后即自动消除文字的效果的话、请把 erafterpage 设为true。</p>
+			<p>此外、linemode为有效的情况下，行头有</p>
+			<p>【名字/表示名】</p>
+			<p>这种形式的记述文字的话，<br>
+			  将自动呼叫显示名字命令 namedisp(名字,表示名) 。<br>
+			  默认情况下， namedisp 对表示的文字不做任何处理，按原样显示。</p>
+			<p>使用「world扩张插件」的情况，请参考 kag3plugin/world/world.txt 。</p>
+			<p>◆craftername（新功能）</p>
+			<p>line mode情况下，名字标记【名字/表示名】之后是否换行的效果</p>
+			<p>属性<br>
+			  mode        true 的话，名字标记后的换行无效。false 的话，则会自动换行。</p>
+			<p>--------------------------------------<br>
+			  【瑠璃子】くすくす</p>
+			<p>【瑠璃子】<br>
+			  くすくす<br>
+			  --------------------------------------</p>
+			<p>craftername mode=true 的情况下，以上两个句子的执行效果是一样的。</p>
+			<p>◆erafterpage（新功能）</p>
+			<p>[p] 之后自动执行 [er] 指令。</p>
+			<p>属性<br>
+			  mode        true 的话 [p] 执行之后自动执行 [er] 指令。</p>
+			<p>注意点<br>
+			  erafterpage为true的话、line mode的自動消去<br>
+			  （下一段文字表示前自动执行[er]）将无效。</p>
+			<p>◆autoindent (新功能)</p>
+			<p>有效的场合、名字之后有 “「”　或者　“『”的文字段，<br>
+			  自动加入indent（缩进）效果。</p>
+			<p>属性<br>
+			  mode        true 或者 false</p>
+			<p>◆autolabelmode (新功能)</p>
+			<p>设为true的话，执行到 [p] 即自动设定可保存标签。<br>
+			  ※linemode为有效的情况下，linemode自动加入的 [p] 也有同样效果。</p>
+			<p>这种情况下，由[p]加入的自动标签，已读管理时，并不是单纯记录标签名，<br>
+			  而是以“标签名＋距离标签的行数”来记录。（可以理解，因为自动标签的名字只有“autolabel”一个，如果只记录标签名就全乱了……）</p>
+			<p>属性<br>
+			  mode        true 或 false</p>
+			<p>注意点：<br>
+			  mode之间最好不要进行切换。在first.ks 设定以后<br>
+			  最好就不要再改动了。</p>
+			<p>　autolabelmode的情况下，记录的档案读取时依赖“行数”的设定，因此<br>
+			  假如存档之后，剧本档有改写，即使原来的标签保留着，也未必能保证正确读取。 <br>
+			  请注意这一点。</p>
+			<p>◇选择支功能扩张（新功能）</p>
+			<p>和 Link 不同的专用选择按钮功能。</p>
+			<p>◆selopt</p>
+			<p>选择支用条件初期化</p>
+			<p>属性<br>
+			  normal        button normal图象<br>
+			  over    button over图象<br>
+			  left        button配置领域左上点x<br>
+			  top        button配置领域左上点y<br>
+			  width        button配置领域宽<br>
+			  height        button配置领域高</p>
+			<p>◆seladd</p>
+			<p>添加选择支</p>
+			<p>属性<br>
+			  text    选择支按钮上显示的文字<br>
+			  storage 选择后跳转到的剧本档<br>
+			  target  选择后跳转到的标签<br>
+			  exp     点下时执行的TJS式</p>
+			<p> 依靠变数分歧的情况下请用exp、直接跳转的情况下请用<br>
+			  storage/target </p>
+			<p>◆select</p>
+			<p> 选择处理执行（估计就是等待玩家选择的指令，相当于[s]）</p>
+			<p> storage/target 指定的情况下、選択処理之后、<br>
+			  跳跃到相应的目标。exp 的情况下， [select] 之后（玩家点选之后）执行 TJS 式。</p>
+			<p>◆mselinit</p>
+			<p>地图选择按钮的初期化，将已经登陆的可选地点信息消除。</p>
+			<p>◆mselbutton</p>
+			<p>用于地图选择的按钮设定。</p>
+			<p>属性<br>
+			  image                图片指定。<br>
+			  width                图片横幅指定(省略可能)<br>
+			  height                图片縦幅指定(省略可能)<br>
+			  count                图片动画样式指定(height已经指定的话可以省略这个)</p>
+			<p> 地图选择的按钮图片　<br>
+			  縦方向：动画样式　<br>
+			  横方向：normal over 的顺序联排<br>
+			  这样的形式。动画样式的数量（帧数？）使用 count 进行指定。</p>
+			<p>◆mselpos</p>
+			<p>用于地图选择的按钮位置设定</p>
+			<p>属性<br>
+			  name                位置的名字<br>
+			  left                X方向座標<br>
+			  top                Y方向座標</p>
+			<p>多个按钮都指定在同一位置的话、<br>
+			  以座標位置为中心，向左右方向延伸并排显示。</p>
+			<p>◆mseladd</p>
+			<p>添加地图用选择按钮。</p>
+			<p>属性<br>
+			  text    选择按钮上显示的文字 (mselopt 里记录的东西)<br>
+			  pos     显示的位置 (mse 里记录的东西|估计是说的mselops的name属性，指定时候就用pos=name的形式)<br>
+			  storage 选择后跳转到的剧本档<br>
+			  target  选择后跳转到的标签<br>
+			  exp     点下时执行的TJS式</p>
+			<p>◆mselopt</p>
+			<p>地图用选择按钮的option指定</p>
+			<p>属性<br>
+			  interval                地图用选择按钮动画样式播放每帧间隔时间<br>
+			  buttonWidth                同个位置指定了多个button时，button的间距<br>
+			  enterse                        enter 時 SE 指定<br>
+			  leavese                        leave 時 SE 指定<br>
+			  clickse                        click 時 SE 指定<br>
+			  frame                        背景画像指定（估计是地图图象？）<br>
+			  frameKey<br>
+			  frameColor<br>
+			  frameOpacity</p>
+			<p>◆mselect</p>
+			<p> 选择处理执行（等待玩家点击）</p>
+			<p>◇scene回想機能（新功能）</p>
+			<p>为实现「scene回想」的辅助指令。</p>
+			<p>A: 剧本档中进行指定</p>
+			<p>1. 希望进行scene回想的部分使用 <br>
+			  -------------------<br>
+			  *kaisouBegin数字编号<br>
+			  ......<br>
+			  *kaisouEnd数字编号<br>
+			  -------------------<br>
+			  这样的标签括起来。</p>
+			<p>2. recollection 指令指定no（编号）的话就可以进行「scene回想」 。</p>
+			<p>这种方式、利用了savedata进行回想的保存。<br>
+			  所以、savedata有矛盾的话这个功能也会受影响。</p>
+			<p>B: 回想用的剧本档是另外设定的情况下</p>
+			<p>1. 回想用剧本档和原本执行的文本不同<br>
+			  在该剧本档的末尾用 endrecollection 指令<br>
+			  2. recoillection 指令中指定 storage/target 呼叫回想用剧本档</p>
+			<p>◆recollection</p>
+			<p>呼叫回想处理。 (效果和 kag.startRecollection(elm) 等价)<br>
+			  呼叫成功的话就无法返回，请注意。（估计是说效果等于是跳转，而不是call）</p>
+			<p>no 呼叫回想的情况下，必须通过 *kaisouBegin番号　<br>
+			  才能有效果。以确认 system flag（系统变量）的<br>
+			  trail_剧本档名_*kaisouBegin数字编号是否为真为标准。<br>
+			  这种情况下，执行到 *kaisouEnd数字编号 的标签则回想结束。</p>
+			<p>不指定 no 的情况下，指定 storage/target 也可以。这种情况下、<br>
+			  endrecollection 命令标记回想结束。</p>
+			<p>属性<br>
+			  no 回想番号<br>
+			  storage 回想用剧本档<br>
+			  target  回想用标签<br>
+			  doneStorage 回想終了後跳转到的剧本档<br>
+			  doneTarget  回想終了後跳转到的标签<br>
+		  </p>
+			<p>回想処理中は…<br>
+			  ・kag.isRecollection 为 true <br>
+			  ・禁止存储相关的动作<br>
+			  ・照常进行已读记录等</p>
+			<p>◆endrecollection</p>
+			<p>回想処理结束。<br>
+			  recollection 结束，转到结束处理。</p>
+			<p>◆stoprecollection</p>
+			<p>回想処理强制停止。<br>
+			  回想状態解除。</p>
+			<p>◇ askYesNo 函数样式变更</p>
+			<p>askYesNo 相关大量更改。<br>
+			  这是为了能在 KAG 里进行调用而做的修改，请注意。</p>
+			<p>过去的askYesNo函数： </p>
+			<p> askYesNo(message, title)</p>
+			<p>　在对话框关闭前禁止一切TJS式执行，并且返回选择结果YES/NO。</p>
+			<p>新的askYesNo函数：</p>
+			<p> askYesNo(message, title, yesFunc, noFunc, param, doneFunc);</p>
+			<p> yesFunc  : YES 的情况下执行的函数<br>
+			  noFunc   : NO 的情况下执行的函数<br>
+			  param    : 传递给各种function的param（参数）<br>
+			  doneFunc : 无论 yes 的情况或 no 的情况均执行的函数</p>
+			<p> 返回值：无<br>
+			  <br>
+			  注意点：<br>
+			  执行后正常返回应该是「可能」的、这只是假想，<br>
+			  需要实际测试验证。</p>
+			<p>◇layer dialogue 扩张</p>
+			<p>样式未确定，因此详细情况不公开（估计这就是传说中的图片对话框！！！）</p>
+			<p>◇MessageWindow 扩张</p>
+			<p>对于</p>
+			<p>「名字层」</p>
+			<p>「表情层」</p>
+			<p> 进行的扩展。</p>
+			<p>◇系统变数的扩张</p>
+			<p>增加了以下这些特殊用的系统变数</p>
+			<p>◆动作控制用変数</p>
+			<p>allskip                false: 进行skip时只跳已读 true: 进行skip时全部跳过<br>
+			  afterauto        false: 进行选择之后auto状态解除 true: 进行选择之后auto状态继续<br>
+			  afterskip        false: 进行选择之后skip状态解除 true: 进行选择之后skip状态继续</p>
+			<p>◆系统设定用变数</p>
+			<p>textspeed                文字速度指定 0～10　(10为瞬间显示)<br>
+			  autospeed                对话自动前进等待速度 0～10<br>
+			  drawspeed                描绘系列描绘速度的调整 1.0:通常 0:瞬間<br>
+			  noeffect                drawspeed 对应的描绘速度效果 true/false 指定<br>
+			  bgmenable                BGM 有效/无效<br>
+			  bgmvolume                BGM 的音量 0～100<br>
+			  seenable                SE 有效/无效<br>
+			  sevolume                SE 的音量  0～100</p>
+			<p>◆voice 关联的变数・方法</p>
+			<p>※这些在只使用 KAGEX 单体的情况下没有意义，只是有这些变数值而已。<br>
+			  必须配合 WORLD 插件的 voice 功能使用。</p>
+			<p>voiceenable                voice有効<br>
+			  voicevolume             voice 的音量 0～100<br>
+			  getVoiceOn(name)            指定名字的角色 voice 有効<br>
+			  getVoiceVolume(name)        指定名字的角色 voice 音量取得<br>
+			  setVoiceVolkume(name,vol)   指定名字的角色 voice 音量设定<br>
+		  </p>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html#docchn" title="ホームにもどる" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

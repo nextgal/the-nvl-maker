@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>macroname</title>
+<link rel="stylesheet" href="base.css" />
+<style type="text/css">
+body,td,th {
+	font-family: "Open Sans", "Trebuchet MS", Helvetica, sans-serif;
+}
+body {
+	background-color: #f6f7f9;
+}
+</style>
+</head>
+<body><div class="container"><p><img src="http://i257.photobucket.com/albums/hh217/countd2005/banner/banner_nvlmaker.png" alt="NVL LOGO" title=""></p>
+
+<p>本工具为使用吉里吉里/KAG开发的免费开源软件。 <br>
+下载最新版本、疑问、讨论、添加自制游戏、推荐素材等，请访问<a href="http://www.nvlmaker.net/">THE NVL Maker</a>官网。</p>
+
+<hr>
+
+<p><div class="toc"><div class="toc">
+<ul>
+<li><a href="#自定macro">自定Macro</a><ul>
+<li><a href="#文件位置">文件位置</a></li>
+<li><a href="#macroplayks">macro_play.ks</a><ul>
+<li><a href="#文字相关">文字相关</a></li>
+<li><a href="#选择相关">选择相关</a></li>
+<li><a href="#画面相关">画面相关</a></li>
+<li><a href="#音声视频">音声、视频</a></li>
+<li><a href="#其他">其他</a></li>
+</ul>
+</li>
+<li><a href="#macrouiks">macro_ui.ks</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</p>
+
+<hr>
+
+<h1 id="自定macro">自定Macro</h1>
+
+<blockquote>
+  <p>总之所谓自定Macro可以看做是一些简化的KAG指令，可以直接使用在.ks文件里并达成一些效果。</p>
+</blockquote>
+
+<h2 id="文件位置">文件位置</h2>
+
+<blockquote>
+  <p>NVL的自定Macro主要放置于每个游戏工程的Data/nvl文件夹下。 <br>
+  其中<strong>macro_play.ks</strong>内的自定Macro是游戏演出相关的，也就是可以在剧情脚本里使用的。 <br>
+  而其他的一些，例如<strong>macro_ui.ks</strong>、<strong>macro_sl.ks</strong>，则主要是界面有关的内容，可以通过修改它们来达成修改系统的目的。 <br>
+  而在Data/macro文件夹下，还有一个叫<strong>macro_self.ks</strong>的文件，你可以模仿其他macro的写法，在这里定义自己的指令。</p>
+</blockquote>
+
+<h2 id="macroplayks">macro_play.ks</h2>
+
+<blockquote>
+  <p>以下将列出较常用到的自定Macro作为参考，使用范例中只列出必须参数，更多参数请自行查看nvl文件夹下的脚本文件。</p>
+</blockquote><div class="se-section-delimiter"></div>
+
+<h3 id="文字相关">文字相关</h3>
+
+<table>
+<thead>
+<tr>
+  <th>指令名</th>
+  <th>说明</th>
+  <th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>lr</td>
+  <td>等待点击、点击之后换行</td>
+  <td></td>
+</tr>
+<tr>
+  <td>w</td>
+  <td>等待点击、点击之后清空之前文字并继续显示下一段</td>
+  <td></td>
+</tr>
+<tr>
+  <td>links</td>
+  <td>文字连接</td>
+  <td>@links text=”文字内容” target=”*标签”</td>
+</tr>
+<tr>
+  <td>npc</td>
+  <td>显示在姓名系统里尚未定义的临时姓名</td>
+  <td>@npc id=”路人甲”</td>
+</tr>
+<tr>
+  <td>dia</td>
+  <td>显示一般对话框</td>
+  <td></td>
+</tr>
+<tr>
+  <td>scr</td>
+  <td>显示大对话框</td>
+  <td></td>
+</tr>
+<tr>
+  <td>menu</td>
+  <td>显示透明对话框</td>
+  <td></td>
+</tr>
+<tr>
+  <td>hidemes</td>
+  <td>隐藏对话框（不会消除头像或改变对话框样式）</td>
+  <td></td>
+</tr>
+<tr>
+  <td>showmes</td>
+  <td>将隐藏的对话框显示出来（如隐藏对话框之后头像没有消除过，则头像仍会恢复显示）</td>
+  <td></td>
+</tr>
+</tbody></table>
+<h3 id="选择相关">选择相关</h3>
+
+<table>
+<thead>
+<tr>
+  <th>指令名</th>
+  <th>说明</th>
+  <th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>selstart</td>
+  <td>准备选项</td>
+  <td></td>
+</tr>
+<tr>
+  <td>selbutton</td>
+  <td>设定选项按钮</td>
+  <td>@selbutton text=”选项文字” target=”*标签”</td>
+</tr>
+<tr>
+  <td>selend</td>
+  <td>显示选项并等待玩家选择</td>
+  <td></td>
+</tr>
+<tr>
+  <td>clsel</td>
+  <td>选择之后，消去画面上的选项按钮</td>
+  <td></td>
+</tr>
+</tbody></table>
+<h3 id="画面相关">画面相关</h3>
+
+<table>
+<thead>
+<tr>
+  <th>指令名</th>
+  <th>说明</th>
+  <th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>bg</td>
+  <td>显示背景</td>
+  <td>@bg storage=”背景图片名”</td>
+</tr>
+<tr>
+  <td>clbg</td>
+  <td>消除背景</td>
+  <td></td>
+</tr>
+<tr>
+  <td>fg</td>
+  <td>显示人物</td>
+  <td>@fg storage=”人物图片名” pos=”center/left/right” layer=”0”</td>
+</tr>
+<tr>
+  <td>clfg</td>
+  <td>消除人物</td>
+  <td>@clfg layer=”0”</td>
+</tr>
+<tr>
+  <td>face</td>
+  <td>显示头像</td>
+  <td>@face storage=”头像图片名”</td>
+</tr>
+</tbody></table>
+<h3 id="音声视频">音声、视频</h3>
+
+<table>
+<thead>
+<tr>
+  <th>指令名</th>
+  <th>说明</th>
+  <th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>bgm</td>
+  <td>播放音乐</td>
+  <td>@bgm storage=”音乐文件名”</td>
+</tr>
+<tr>
+  <td>se</td>
+  <td>播放音效</td>
+  <td>@se storage=”音效文件名”</td>
+</tr>
+<tr>
+  <td>vo</td>
+  <td>播放语音（支持历史记录回放）</td>
+  <td>[vo storage=”语音文件名”]台词。[w]</td>
+</tr>
+<tr>
+  <td>endvo</td>
+  <td>等待语音播放结束（当句末不为[w]时使用。）</td>
+  <td>[vo storage=”语音文件名”]台词。[endvo]</td>
+</tr>
+<tr>
+  <td>mv</td>
+  <td>播放视频</td>
+  <td>@mv storage=”视频文件名.扩展名”</td>
+</tr>
+</tbody></table>
+
+
+<h3 id="其他">其他</h3>
+
+<table>
+<thead>
+<tr>
+  <th>指令名</th>
+  <th>说明</th>
+  <th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>movepos</td>
+  <td>简单的移动指令</td>
+  <td>@movepos layer=”0” time=”1000” x=20 y=-30 opacity=128 ;1000毫秒内，向右移动20像素，向上移动30像素，图片透明度改为128</td>
+</tr>
+<tr>
+  <td>shake</td>
+  <td>背景进行一次简单的摇晃</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+<h2 id="macrouiks">macro_ui.ks</h2>
+
+<blockquote>
+  <p>以下将列出较常用到的自定Macro作为参考，使用范例中只列出必须参数，更多参数请自行查看nvl文件夹下的脚本文件。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>指令名</th>
+  <th>说明</th>
+  <th>使用范例</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>frame</td>
+  <td>设定一个全屏透明的消息层</td>
+  <td>@frame layer=”message0/message1/…/message4”</td>
+</tr>
+<tr>
+  <td>showsysbutton</td>
+  <td>显示系统按钮</td>
+  <td></td>
+</tr>
+<tr>
+  <td>hidesysbutton</td>
+  <td>隐藏系统按钮</td>
+  <td></td>
+</tr>
+<tr>
+  <td>disablesysbutton</td>
+  <td>系统按钮无效化（显示但不能点）</td>
+  <td></td>
+</tr>
+<tr>
+  <td>enablesysbutton</td>
+  <td>系统按钮有效化</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+<blockquote>
+  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote></div></body>
+</html>

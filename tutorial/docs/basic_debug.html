@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3>除错</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+				在制作游戏中总是时不时要跑一下游戏，这就被叫做测试。<br>
+                但是当测试时候的游戏效果和你想象中的不太一样，甚至弹出警告窗口的时候，就说明一定是<del>打开方式不对</del>哪里出了问题。<br>
+                这种情况下就需要用到除错（debug）功能了。
+			</p>
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+	<h3>吉里吉里/KAG的后台</h3>
+
+  <div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+            <p class="deco">
+                运行测试中的吉里吉里/KAG游戏时，上方菜单通常都会有一栏“除错”。<br>
+                可以在游戏发布时，通过修改Config.tjs来关掉它。<br>
+                不过在测试的时候，这个菜单是非常有用的。<br>
+                尤其是点下“除错-后台（控制台）”或者按下Shift+F4之后，自动弹出的黑色窗口。<br>
+                这个窗口是用来记录游戏执行过程中的信息的。<br>
+                现在游戏执行到什么地方、读取了哪些图片、哪些文件找不到而导致出错……等等都会显示在这里。<br>
+                因此推荐测试游戏时长期开着这个窗口。这样一旦出错，也知道错在第几行。
+              </p>
+              <img class="deco" src="../sc/console_01.png" width="863" height="485"></img>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+    </div><!-- /write -->
+    <div class="line"><hr></div>
+        
+	 <h3>查看游戏中变量的值</h3>
+        
+        <div class="write">
+        
+            <!-- ============ ▼本文　ここから ============ -->
+            <p class="deco">
+            	除了查看当前状态以外，后台还提供了直接查看或者操作变量值的功能。<br>
+                可以把它当做作弊器使用（大误）。<br>
+                例如说想要测试满足和不满足好感度的情况下不同的剧情走向，这种时候如果每次测试都要从头开始攻略这个角色也太麻烦了……<br>
+                因此通过在事件测试中修改好感度来满足要求的条件就是非常常用的方法了。<br>
+                总之来具体尝试一下，首先在游戏执行中打开后台。
+            </p>
+              <img class="deco" src="../sc/console_var_input.jpg" width="519" height="387"></img>
+            <p class="deco">
+            	在下面的输入框里输入想要查看的变量名字。例如“f.新建变数”。<br>
+                可以使用中文名这点还是很方便的。<br>
+                之后按下左侧的蓝色箭头，或者直接按回车键。<br>
+                会出现类似下面这样一行：
+            </p>
+              <img class="deco" src="../sc/console_var_show.jpg" width="515" height="65"></img>
+            <p class="deco">
+            	因为这个变量从来没有使用过，所以它的值就是空(void)。<br>
+            	当在吉里吉里里自动转换时，空值也就等于是数字0。
+            </p> 
+            <!-- ============ ▲本文　ここまで ============ -->
+        
+        </div><!-- /write -->
+        <div class="line"><hr></div>
+        
+	 <h3>操作变量的值</h3>
+        
+  <div class="write">
+        
+            <!-- ============ ▼本文　ここから ============ -->
+            <p class="deco">
+				接下来就是直接从后台操作变量的方法。<br>
+                例如，准备把“f.新建变数”的值从(void)修改成5。<br>
+                就可以这样写：f.新建变数=5<br>
+                按下回车之后，后台上会显示你所输入的式子，并且输出结果。
+            </p>
+              <img class="deco" src="../sc/console_var_control.jpg" width="519" height="387"></img>
+            <p class="deco">
+            	现在，f.新建变数的值已经从原来的(void)变成了5。<br>
+                可以再次用上面说过查看变量值的方法，输入变量的名字进行确认。
+            </p>
+      		  <img class="deco" src="../sc/console_var_result.jpg" width="515" height="64"></img>
+            <p class="deco">
+             	数字5前面的(int)代表了变量的值为整数(Integer)。
+            </p>
+        
+      <!-- ============ ▲本文　ここまで ============ -->
+        
+    </div><!-- /write -->
+        <div class="line"><hr></div>
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

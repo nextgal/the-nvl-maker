@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+    <h3 id="tab">界面详解</h3>
+    
+        <div class="write">
+    
+            <!-- ============ ▼本文　ここから ============ -->
+        <p class="deco">
+        	下面要说明的是THE NVL Maker编辑器的主要功能，共分成下面的五个部分。<br>
+            本篇的内容较长，请耐心看完。之后也可能需要随时翻阅。<br>
+            对部分较复杂的功能，会有专门的教程说明。
+        </p>
+		<ul class="parallel">
+        <li><a href="#project" target="_self">[ 工程设定 ]</a></li>
+        <li><a href="#ui" target="_self">[ 界面设定 ]</a></li>
+        <li><a href="#script" target="_self">[ 脚本编辑 ]</a></li>
+        <li><a href="#name" target="_self">[ 姓名编辑 ]</a></li>
+        <li><a href="#system" target="_self">[ 游戏系统 ]</a></li>
+        </ul>
+    
+            <!-- ============ ▲本文　ここまで ============ -->
+    
+        </div><!-- /write -->
+        <div class="line"><hr></div>
+        
+
+    <h3 id="project">工程设定</h3>
+    
+      <div class="write">
+    
+            <!-- ============ ▼本文　ここから ============ -->
+        <img src="../sc/editor_tab.jpg" width="744" height="458">   
+        <p class="deco">
+            默认打开的是“工程设定”页，在这里可以进行如下操作：
+        </p>
+        <ul class="deco">
+            <li>标题：修改游戏名称，名称将会在窗口模式下，显示在游戏的左上角</li>
+            <li>启动画面：启动画面脚本是指THE NVL Maker游戏开始时，会执行的第一个脚本。默认是title.ks。修改启动画面，让它跳转到自制的脚本，就可以实现完全的自制标题、或者先执行前言再进入标题画面的效果</li>
+            <li>宽度、高度：修改游戏分辨率（不推荐新手使用，因为修改以后素材并不会自动跟着修改，可能会导致素材与画面大小不同的弹窗、画面按钮显示不全等错误。修改分辨率时请尽量使用Wizard.exe）</li>
+            <li>选项音效：设定当游戏中出现分支选项时，鼠标移动到选项上和按下选项之后播放的音效</li>
+            <li>选项按钮：设定当游戏中出现分支选项时，用作选项文字衬底按钮的一般、选中、按下状态</li>
+            <li>选项文字：设定当游戏中出现分支选项时，选项文字的字号、一般、选中、按下、曾经选择过时的文字颜色</li>
+        </ul>
+       
+        <!-- ============ ▲本文　ここまで ============ -->
+    
+        </div><!-- /write -->
+        <div id="footer">
+                <ul>
+				<li><a href="#tab" title="返回页顶" target="_self">Top</a></li>
+                </ul>
+        </div>
+        <div class="line"><hr></div>
+    
+
+    <h3 id="ui">界面设定</h3>
+    
+  <div class="write">
+    
+            <!-- ============ ▼本文　ここから ============ -->
+        <img src="../sc/editor_ui.jpg" width="1022" height="427">
+               
+        <p class="deco">
+            这部分用于编辑THE NVL Maker游戏的界面样式。<br>
+        	点下界面设定部分的每个按钮，都会打开一个新的编辑窗口或者文件。<br>
+            请在编辑后点击“确认”或者“保存”将修改记录下来。只有当返回到上图的画面时，才算真正编辑完毕。<br>
+            编辑的修改都会在游戏测试时体现出来。不过请注意，如果测试时读取了编辑之前保存的存档，排版等等可能还会维持之前的样式。<br>
+            具体的按钮说明见下：
+        </p>
+        
+        <ul class="deco">
+        	<li>Config.tjs：打开吉里吉里/KAG设定文件的编辑工具KAGConfigEX2.exe，假如无法启动这个工具，请查看教程“<a href="../download.html">下载运行”</a>篇。
+            <strong>包含几乎所有的系统细节设置功能</strong>，如果有某个细节不知道在哪里改，多半可以从这里找到</li>
+        	<li>对话画面：设置三种对话框样式、头像的位置、对话框上的系统按钮</li>
+        	<li>默认标题画面：设置游戏启动时默认进入的标题画面title.ks的显示效果。包含游戏组LOGO、标题背景、前景、开始游戏、读取进度、CG模式等按钮</li>
+        	<li>主选单：当点击对话画面的“主选单”系统按钮之后，会进入到这个界面、可以通过这个界面继续选择保存、读取游戏、系统设定、显示历史记录等</li>
+        	<li>系统设定：游戏内的系统参数设置界面，包括了音乐、音效的音量、文字前进速度、自动前进等待时间、快进设定、全屏/窗口设定等功能</li>
+        	<li>历史记录：显示游戏对话记录的界面，包括了滚动条、上下翻页按钮等的设置</li>
+        	<li>存取样式-版面设定：保存、读取系统的排版，两个系统将会采用同一个布局，但可以通过下面分别的系统样式来指定具体的图片、按钮样式</li>
+        	<li>存储系统样式：保存画面上的图片、按钮样式设置</li>
+        	<li>读取系统样式：读取画面上的图片、按钮样式设置</li>
+        	<li>CG界面编辑：CG模式的界面样式，包含了CG缩略图大小、翻页按钮等的设置</li>
+        	<li>CG列表编辑：打开文本文件cglist.txt，将待显示的CG文件名写入，则登陆CG之后，可以在CG模式下看到对应的CG图</li>
+        </ul>
+        
+<!-- ============ ▲本文　ここまで ============ -->
+    
+    </div><!-- /write -->
+        <div id="footer">
+                <ul>
+				<li><a href="#tab" title="返回页顶" target="_self">Top</a></li>
+                </ul>
+        </div>
+        <div class="line"><hr></div>
+
+    <h3 id="script">脚本编辑</h3>
+    
+      <div class="write">
+    
+            <!-- ============ ▼本文　ここから ============ -->
+        <img src="../sc/editor_open_scenario.jpg" width="720" height="427">
+        <p class="deco">
+        这部分用来编辑游戏的“剧情”。可以新建脚本或者打开现有的脚本进行编辑。<br>
+        “打开脚本”之后就进入到了具体的脚本编辑界面，可以往脚本里添加显示背景、人物、播放音乐音效、显示对话、选项分支等等。<br>
+        此外，使用“台词抽取”功能，可以将脚本里的描述或台词单独导出成文本，方便进行游戏字数统计，以及制作语音版。
+        </p>
+
+        <!-- ============ ▲本文　ここまで ============ -->
+    
+        </div><!-- /write -->
+        <div id="footer">
+        <ul>
+        <li><a href="#tab" title="返回页顶" target="_self">Top</a></li>
+        </ul>
+        </div>
+        <div class="line"><hr></div>
+        
+    <h3 id="name">姓名编辑</h3>
+    
+      <div class="write">
+    
+            <!-- ============ ▼本文　ここから ============ -->
+        <img src="../sc/editor_name.jpg" width="1366" height="412">
+		<p class="deco">
+			姓名编辑是THE NVL Maker一个重要的辅助功能。<br>
+            在这里记录的姓名信息会出现在脚本编辑界面里的人物姓名列表中，可以直接选择，省略了对话时需要频繁输入姓名的麻烦。<br>
+            还可以设定每个姓名对应的颜色，则在对话和历史记录回放中，人物名称会有各自独立的颜色。
+        </p>
+
+        <!-- ============ ▲本文　ここまで ============ -->
+    
+        </div><!-- /write -->
+        <div id="footer">
+        <ul>
+        <li><a href="#tab" title="返回页顶" target="_self">Top</a></li>
+        </ul>
+        </div>
+        <div class="line"><hr></div>
+        
+    <h3 id="system">游戏系统</h3>
+    
+      <div class="write">
+    
+            <!-- ============ ▼本文　ここから ============ -->
+        <img src="../sc/editor_map_edu.jpg" width="1263" height="484">
+		<p class="deco">
+		提供AVG游戏常用的自制界面——地图和养成画面的编辑工具。<br>
+            和界面编辑器里设定的系统界面不同，地图和养成画面都可以设定多个，并可在剧情脚本中调用。<br>
+            地图画面提供了地图点（按钮）设置功能，可用于制作简单的AVG地图或列表。<br>
+            养成画面则在按钮的基础上，提供了文字、数字、图形、图形数字显示的功能。可以用来制作养成系统的指令下达画面、或较复杂的AVG游戏地图。
+        </p>
+
+        <!-- ============ ▲本文　ここまで ============ -->
+    
+        </div><!-- /write -->
+        <div id="footer">
+                <ul>
+				<li><a href="#tab" title="返回页顶" target="_self">Top</a></li>
+                </ul>
+        </div>
+        <div class="line"><hr></div>
+                
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

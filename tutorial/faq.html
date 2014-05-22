@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3 id="faq">常见问题</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+		<ul class="parallel">
+        <li><a href="#test" target="_self">[ 启动与测试 ]</a></li>
+        <li><a href="#sozai" target="_self">[ 导入素材 ]</a></li>
+        <li><a href="#image" target="_self">[ 图片显示 ]</a></li>
+        <li><a href="#sound" target="_self">[ 音声播放 ]</a></li>
+        <li><a href="#select" target="_self">[ 选项与文字 ]</a></li>
+        <li><a href="#system" target="_self">[ 系统修改 ]</a></li>
+        </ul>
+
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+	<h3 id="test">启动与测试</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+        <dl>
+            <dt class="deco">
+            	Q. 脚本编辑器打开中，点下绿色箭头无法测试。
+            <dt>
+            <dd>
+            	不要恐慌，这是正常情况。<br>
+                请用脚本编辑界面左侧的“全局测试”“事件测试”按钮代替。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 其他情况下，点下绿色箭头无法测试。
+            <dt>
+            <dd>
+            	请确认编辑中的游戏文件夹下有krkr.exe这个文件。<br>
+                想要将游戏可执行文件改名是没问题的，但请复制一份krkr.exe以备编辑器测试。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 打不开Wizard.exe或者KAGConfigEX2.exe。
+            <dt>
+            <dd>
+            	请确保没有移动过他们的位置。<br>
+                请安装netframework 4.0。<br>
+                安装的情况下依然无法使用，请更换版本（官网下载页有提供）。<br>
+                终极方案：其实Wizard.exe不是必须的，直接复制一份project下面的Template，当做新游戏工程用就行了。<br>
+                终极方案2：其实KAGConfigEX2.exe也不是必须的，直接用文本编辑器打开Config.tjs就可以修改了。<br>
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 打不开编辑器Editor.exe。
+            <dt>
+            <dd>
+            	日版系统下可能无法使用THE NVL Maker中文版。<br>
+                请将电脑区域语言切至中文或下载国际版。<br>
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 编辑器Editor.exe无法显示全部画面。
+            <dt>
+            <dd>
+                这也分成两种情况：<br>
+                1、显示器分辨率太小，相对来说编辑器太大<br>
+                这种情况下，请设置合适的显示器分辨率。<br>
+                如果只想制作800x600分辨率游戏，也可以使用为笔记本电脑等小分辨率版本特制的Editor_lite.exe。<br>
+                终极解决方案：请升级显示器，笔记本电脑请使用外接显示器。<br>
+                2、游戏分辨率太大，相对来说编辑器太小<br>
+                这种情况下，虽然你的显示器很牛逼，但也请不要创建大于1280x800的游戏。<br>
+                终极解决方案：下载编辑器源代码，修改编辑器的窗口大小直到画面能显示下你的游戏界面+侧边栏，理论上来说可以无限放大，只要电脑带得动。<br>
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 直接打开游戏的krkr.exe测试游戏，无法进入标题画面，而是进入了上次编辑的剧情。
+            <dt>
+            <dd>
+                发生原因是上一次使用脚本编辑界面时，使用了“事件测试”功能，并且没有关闭脚本，而是直接关闭了编辑器，导致系统维持事件测试状态。<br>
+                请打开编辑器，点一下测试的绿色箭头，会自动修改回来。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 修改了一些配置（例如字体）之后，发现在游戏里没有生效。
+            <dt>
+            <dd>
+				请运行一次“删除存档.bat”。
+            </dd>
+		</dl>
+        
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+        
+        <div id="footer">
+                <ul>
+				<li><a href="#faq" title="返回页顶" target="_self">Top</a></li>
+                </ul>
+        </div>
+
+		<div class="line"><hr></div>
+        
+	<h3 id="sozai">导入素材</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+        <dl>
+            <dt class="deco">
+            	Q. 去哪里寻找可用素材？
+            <dt>
+            <dd>
+                请参考官网素材推荐页。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 添加的素材文件在图片选择窗口里找不到。
+            <dt>
+            <dd>
+                添加素材后请“重载工程”或关闭编辑器再重新打开。<br>
+                可能不是放在默认文件夹，请点击三角形选择不同的文件夹。<br>
+                请确保素材文件格式和名称正确，除了扩展名以外不要使用包含“.”的文件名。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 人物图片应该选择什么颜色作为透明色？
+            <dt>
+            <dd>
+                不需要指定透明色，直接导出成带透明通道（alpha channel）的PNG格式即可。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 制作中途，突然想要改变游戏的分辨率，是否可能？
+            <dt>
+            <dd>
+                请使用Wizard.exe，选择“项目”后，进行分辨率更改。<br>
+                放大或多次修改分辨率会导致素材图片质量劣化，因此不推荐。<br>
+                假如直接使用Config.tjs的分辨率修改，则只能修改窗口大小，素材图片需要自己手动修改。
+            </dd>
+		</dl>
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+        <div id="footer">
+                <ul>
+				<li><a href="#faq" title="返回页顶" target="_self">Top</a></li>
+                </ul>
+        </div>
+		<div class="line"><hr></div>
+        
+	<h3 id="image">图片显示</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+        <dl>
+            <dt class="deco">
+            	Q. 怎样正确地在CG鉴赏画面里显示一张CG？
+            <dt>
+            <dd>
+				1、使用“界面设定-CG列表编辑”功能。打开cglist.txt，并将CG图片文件名按照格式填入。<br>
+                2、在脚本里使用“登陆CG”指令，并指定对应的CG图片文件名。<br>
+                满足以上两个条件（CG列表里有、执行过登陆CG指令）的图片，就能够在CG鉴赏画面里显示出来。<br>
+                3、cglist.txt的填写格式：<br>
+                <ul>
+                <li>每行一张（或多张）图片对应同一张CG缩略图，同一行的多张图片之间用半角逗号隔开，但行末不需要逗号。</li>
+                <li>为了避免报错，请不要留有空行。</li>
+                <li>当搜索不到对应CG缩略图（文件名_thum.png）时，会使用每行第一张CG缩小来作为按钮。</li>
+                </ul>
+            </dd>
+		</dl>
+        <dl>
+            <dt class="deco">
+            	Q. 怎样显示两个或以上的角色？
+            <dt>
+            <dd>
+				请为每个角色指定不同的图层编号。
+            </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 左对齐、居中、右对齐等的具体位置是怎么设定的？
+            <dt>
+            <dd>
+				请修改Config.tjs“图形与音声设定”的“前景层的自动对齐位置指定”数值。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 怎样使两个角色立绘同时显示，或表情同时变化？
+            <dt>
+            <dd>
+                1、准备切换<br>
+                2、载入图片A在图层1，里页<br>
+                3、载入图片B在图层2，里页<br>
+                4、执行切换<br>
+                5、等待切换
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 怎样只消除头像？
+            <dt>
+            <dd>
+				使用“消除人物/头像”指令，编号指定为“头像层No.8”。
+            </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 怎样在对话中途改变人物表情等？
+            <dt>
+            <dd>
+				直接在对话中插入对应指令。例如：
+                <blockquote>
+                你好，<br>
+                [fg storage="abc"]<br>
+                又见面了呢。[w]
+                </blockquote>
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 背景循环滚动的效果要怎么做？
+            <dt>
+            <dd>
+				请查看nvl\PicScroller.ks内的说明。
+            </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 播放逐帧图片动画的效果要怎么做？
+            <dt>
+            <dd>
+				请查看nvl\AnimPlayer.ks内的说明。
+            </dd>
+		</dl>
+        
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+        <div id="footer">
+                <ul>
+				<li><a href="#faq" title="返回页顶" target="_self">Top</a></li>
+                </ul>
+        </div>
+		<div class="line"><hr></div>
+
+	<h3 id="sound">音声播放</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+            
+        <dl>
+            <dt class="deco">
+            	Q. 播放MIDI没有声音。
+            <dt>
+            <dd>
+				Config.tjs里，将“图形与音声设定”一栏的“音乐文件格式”设定为“MIDI文件”。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 怎样同时播放多个音效？
+            <dt>
+            <dd>
+				请为音效指定不同的编号。可选0、1、2。<br>
+                需要更多时请在Config.tjs里，将“图形与音声设定”一栏的“音效缓冲数量”数值增加。
+            </dd>
+		</dl>
+        <dl>
+            <dt class="deco">
+            	Q. 怎样在显示台词时插播语音，并可以在历史记录里重放？
+            <dt>
+            <dd>
+				使用[vo storage="语音文件名"][endvo]将对应的台词括起来，例如：<br>
+                <blockquote>
+                [vo storage="角色语音_001.ogg"]<br>
+                今天天气真好。<br>
+                [endvo]<br>
+                </blockquote>
+            </dd>
+		</dl>
+        <dl>
+            <dt class="deco">
+            	Q. 怎样播放视频？
+            <dt>
+            <dd>
+				使用“直接编辑”打开.ks脚本，并在需要的位置插入如下代码：<br>
+                3.70+的情况：
+                <blockquote>
+					[mv storage="视频文件名.扩展名"]
+                </blockquote>
+                3.55及以下的情况：
+                <blockquote>
+                [video width="1024" left="0" visible="true" height="768" top="0" mode="mixer"]<br>
+                [playvideo storage="视频文件名.扩展名"]<br>
+                [wv canskip=true]
+                </blockquote>
+                请记得视频文件是一定要加扩展名的。<br>
+                相比默认的overlay模式，使用mixer或者layer模式可以避免WMV格式视频在WIN7下播放上下颠倒的问题。<br>
+            </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 使用以上代码播放视频文件黑屏。
+            <dt>
+            <dd>
+                请查看后台，是否显示无法播放视频。<br>
+                请确保导出的视频文件格式正确。<br>
+				关于导出格式，推荐由蘇眉撰写的教学文“<a href="http://bbs.etale.us/forum.php?mod=viewthread&tid=2743&extra=page%3D1" target="_blank">KRKR视频压缩/转换经验浅谈</a>”。 
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 视频要做得和窗口一样大小吗？
+            <dt>
+            <dd>
+				不需要，可以调整video的width和height来缩放视频。
+            </dd>
+		</dl>
+        
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+        <div id="footer">
+                <ul>
+				<li><a href="#faq" title="返回页顶" target="_self">Top</a></li>
+                </ul>
+        </div>
+		<div class="line"><hr></div>
+
+
+	<h3 id="select">选项与文字</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+        <dl>
+            <dt class="deco">
+            	Q. 怎样制作限时选项？
+            <dt>
+            <dd>
+				等待选项的指令修改为如下格式（使用“直接编辑”打开脚本）：<br>
+                <blockquote>
+				[selend timeout=1 outtime=10000 storage="超时后跳转到的脚本.ks" target="*超时后跳转到的标签"]
+                </blockquote>
+                timeout=1代表“计时选项”。等于0就代表一般选项了，默认是等于0的所以不用特别标记。<br>
+                outtime=10000代表“等待10秒”。以毫秒（1秒=1000毫秒）为计时单位。
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 怎样制作限时选项的同时，显示倒计时槽？
+            <dt>
+            <dd>
+				有插件可以使用，同样也是继续为selend添加参数。<br>
+                例子如下（...为上面限时选项的参数部分）:
+                <blockquote>
+				[selend ... bgimage="计时槽边框" bgx="边框横坐标" bgy="边框纵坐标" bar="时间条图片" x="时间条横坐标" y="时间条纵坐标" width="时间条长度"]
+                </blockquote>
+                更具体的使用方式，例如怎样消除倒计时槽，请查看插件nvl\timebar.ks内的说明。
+            </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 怎样制作滚动的制作人员字幕表？
+            <dt>
+            <dd>
+				请查看插件nvl\staffroll.ks内的说明。
+            </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 怎样制作满足条件才出现的选项？怎样制作通关后才能攻略的隐藏人物剧情？怎样改变游戏通关后的标题画面？
+            <dt>
+            <dd>
+			请查看教程“<a href="docs/begin_if.html">条件分歧</a>”。 </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 对话、系统按钮等等突然不显示了。
+            <dt>
+            <dd>
+                如果之前有使用过选项、地图、养成面板，请执行对应的消除指令。<br>
+				没有使用过的情况，请执行一次“对话框”指令，让文字显示恢复正常。<br>
+            </dd>
+		</dl>
+
+        <dl>
+            <dt class="deco">
+            	Q. 不能显示指定字体或字体显示很奇怪，要怎么修改？
+            <dt>
+            <dd>
+			请使用“预渲染文字”。<br>
+            可以参考<a href="http://kibitz2550.blogspot.hk/2012/08/kag-4.html" target="_blank">kibitz撰写的教程（需翻墙）</a>。 </dd>
+		</dl>
+
+       
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+   	<h3 id="system">系统修改</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+        
+        <dl>
+            <dt class="deco">
+            	Q. 怎样让人物姓名位置和一般对话分离，制作出“姓名框与对话框分开”的效果？
+            <dt>
+            <dd>
+			请参考教程“<a href="docs/begin_nameframe.html">系统改造：独立姓名框</a>”。 </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 不想在对话框上放系统按钮，怎样将右键隐藏对话框改为右键显示其他界面（右键菜单模式）？
+            <dt>
+            <dd>
+				请修改scenario\first.ks，将以下一行（注释“右键菜单及系统按钮层的处理”下方）
+                <blockquote>
+                [rclick enabled="false" call="true" storage="rclick.ks" target=*隐藏对话框]
+                </blockquote>
+                改为
+                <blockquote>
+                [rclick enabled="false" call="true" storage="main_menu.ks"]
+                </blockquote>
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 怎样修改例如“关闭游戏吗？”等询问窗口上的用语？
+            <dt>
+            <dd>
+				请修改nvl\MySaveLoadFunction.tjs内的对应文字。<br>
+                或直接使用code文件夹下的代码，将询问窗口改为图片。
+            </dd>
+		</dl> 
+ 
+         <dl>
+            <dt class="deco">
+            	Q. 怎样修改游戏内显示的鼠标指针？
+            <dt>
+            <dd>
+				请使用KAGConfigEx2.exe修改Config.tjs里的“鼠标指针”一栏。<br>
+                假如需要在游戏中随时改变鼠标指针的外形，可使用以下指令。
+                <blockquote>
+                [cursor default="指针文件名"]
+                </blockquote>                
+            </dd>
+		</dl>
+        
+        <dl>
+            <dt class="deco">
+            	Q. 怎样自制鼠标光标、游戏程序图标？怎样替换游戏程序图标？
+            <dt>
+            <dd>
+				推荐免费软件<a href="http://greenfish.tk/" target="_blank">Greenfish Icon Editor Pro</a>。<br>
+                具体请查看教程“<a href="docs/begin_pack.html">游戏打包</a>”。
+          </dd>
+		</dl>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>   
+                
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="#faq" title="返回页顶" target="_self">Top</a></li>
+			<li><a href="index.html" title="返回首页" target="_parent">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

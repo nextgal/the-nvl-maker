@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+
+	<h3>表页与里页</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<p class="deco">
+            
+                KAG 的每一层又可以分成两部分，表页 fore 、里页 back 。<br>
+                所有表页的内容组成了画面上显示的东西，而里页的内容，画面上是看不到的。<br>
+                里页主要是在使用[trans]（画面切换效果）之前，用于预载想要显示的内容的。（转自KAG官方文档汉化版）<br><br>
+                
+                如果将吉里吉里/KAG的所有层理解成<strong>一叠卡片</strong>的话，表页就是卡片当前朝向屏幕的一面。<br>
+                那么，切换就是把所有的卡片翻面，让表页和里页互换。<br><br>
+                
+                在NVL里，显示人物背景等等，都是将加载和切换封装成一个指令，因此基本不会用到页这个概念。<br>
+                只有在少数情况下会需要指定表页或者里页，例如需要两张角色图片一起改变表情，或者在自制界面上显示一系列图片和按钮。<br>
+                
+                这时候请记住一个简单的辨别方法：<br>
+                假如不需要过渡效果，只想立刻显示一张图片，请指定为加载到表页；<br>
+                假如需要过渡效果，例如从透明开始渐渐显示（淡入），请指定为加载到里页。
+                
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+	<h3>画面切换·图片</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+        <p class="deco">
+        	如果所有的图片、文字等等都是瞬间跳出来，虽然速度很快，但会显得很突兀。<br>
+            因此就像PPT每一页出现时都可以有不同效果一样，吉里吉里/KAG也提供了画面切换的功能。<br>
+            通常来说，切换是这样进行的——
+            
+        </p>
+        <ul class="deco">
+            <li>将现在显示的所有图层的表页，完整地复制到里页上（保证不想改变的内容在翻面之后依然维持原样）</li>
+            <li>载入图片到特定图层的里页（修改想要改变的层的里页内容）</li>
+            <li>将表页的内容和里页的内容交换（进行翻面）</li>
+            <li>等待切换效果执行完毕</li>
+        </ul> 
+        <p class="deco">
+             例如只改变背景图片，而现在显示中的人物、对话框等都不做任何处理保持原样。<br>
+             这样的切换写成未封装指令（KAG官方指令）的话，就是下面这段：
+        </p>
+        <blockquote>
+            [backlay]<br>
+            [image layer=stage page=back visible=true storage="BG01a"]<br>
+            [trans method=crossfade time=1000]<br>
+            [wt]
+        </blockquote>
+        <p class="deco">
+          使用THE NVL Maker的脚本编辑器打开，显示如下：
+        </p>
+        <blockquote>
+        <img src="../sc/trans_script.jpg" width="378" height="88"></img> 
+        </blockquote>
+        <p class="deco">
+          将以上的代码添加一行，变成下面这样，就可以做出让背景和人物一起显示的效果了。
+        </p>
+        <blockquote>
+            [backlay]<br>
+            [image layer=stage page=back visible=true storage="BG01a"]<br>
+            [image layer=0 page=back visible=true storage="fg01_01" pos=center]<br>
+            [trans method=crossfade time=1000]<br>
+            [wt]
+        </blockquote>
+		  <!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>画面切换·文字与按钮</h3>
+
+		<div class="write">
+        
+        <p class="deco">
+            文字和按钮则和图片不一样，表页和里页的指定，是通过设定当前消息层的表/里来进行的，因此不需要特别在显示文字或按钮的指令里说明。<br>
+            而只需要在显示按钮和文字之前，使用如下指令即可。
+        </p>
+        <blockquote>
+            [current layer=message0/message1/…… page=fore/back]
+        </blockquote>
+        <p class="deco">
+			例如，想要在message1上显示自己定义的按钮，并通过切换显示出来：
+        </p>
+        <blockquote>
+            [backlay]<br>
+            [current layer=message1 page=back]<br>
+            [locate x=0 y=0]<br>
+            [button normal="按钮图片名"]<br>
+            [trans method=crossfade time=1000]<br>
+            [wt]
+        </blockquote>
+            
+		  <!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>切换效果</h3>
+
+		<div class="write">
+        
+        <p class="deco">
+        	吉里吉里内建了一些画面切换方式，包括淡入、滚动、根据规则图片切换等。<br>
+            加上扩展的效果插件extNagano.dll的补充（水波、翻页、3D变形等），可以使用的效果共有二十种以上。<br>
+            更详细的关于切换效果的说明，
+            可以查看<a href="http://kcddp.keyfc.net/bbs/viewthread.php?tid=1069&extra=page%3D1" target="_blank">KAG3DOC</a>，
+            下载<a href="http://ymtkyk.sakura.ne.jp/krkr.STG/" target="_blank">extNagano.dll</a>的官方范例，
+            以及<a href="http://variabled.weebly.com/transition--action-sample.html" target="_blank">KAGEX切换及动态效果范例</a>。 
+        </p>
+        
+		</div><!-- /write -->
+		<div class="line"><hr></div>                 
+
+
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

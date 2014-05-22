@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3>ACTION系统文档</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<p class="deco">
+                Title: 吉里吉里/KAG改 アクション解説<br>
+                Author: 合資会社ワムソフト 渡邊剛<br>
+                Translator: VariableD</p>
+			<p>●概要</p>
+			<p>ActionLayer 是使吉里吉里的层拥有动态效果的扩展功能层。</p>
+			<p>◇TJS 中的使用方法</p>
+			<p>可以向 ActionLayer 的 beginAction 传递参数。<br>
+			  样式1<br>
+			  第一参数: 动态效果模式<br>
+			  第二参数: 参数的字典变量<br>
+			  样式2<br>
+			  第一参数: 参数的字典变量。使用 &quot;module&quot; 指定动态效果模式名。</p>
+			<p>◇KAGEX 中的使用方法</p>
+			<p>动作的开始<br>
+			  [action layer=层名 module=动态效果模式 time=1000 ... ]</p>
+			<p>动作的停止<br>
+			  [stopaction layer=层名]</p>
+			<p>等待动作结束后继续下一指令<br>
+			  [wact layer=层名]<br>
+			  省略layer属性的情况下，将等待全部层动作停止。</p>
+			<p>◇层动作的注意事项：</p>
+			<p>・属于同一组的动态效果模式是互斥的，在一个层上只能同时有一个效果生效。<br>
+			  ・不属于同组的动态效果模式可以叠加在同一层。（译注：例如可以一边放大画面一边摇晃画面……）</p>
+			<p>●属性相关</p>
+			<p>◇所有动作模式的通用属性</p>
+			<p>time    动作执行的持续时间<br>
+			  delay    延迟指定的一段时间后开始执行动作</p>
+			<p>◇移动动作组</p>
+			<p>◆共通属性</p>
+			<p>x        移动目标位置<br>
+			  y        移动目标位置</p>
+			<p>◆LayerNormalMoveModule  通常移动</p>
+			<p>无特别属性</p>
+			<p>◆LayerAccelMoveModule　 加速移动</p>
+			<p>无特别属性</p>
+			<p>◆LayerDecelMoveModule  减速移动</p>
+			<p>无特别属性</p>
+			<p>◆LayerParabolaMoveModule  抛物线式移动</p>
+			<p>x/y 是指定抛物线顶点坐标（并非落地点坐标）<br>
+			  toptime    则是指定到达最高点所花费的时间（同时指定了 time 属性的话，就可以制造出具有初速度的抛物线鸟。)</p>
+			<p>◇往返运动动作组</p>
+			<p>◆共通属性</p>
+			<p>无</p>
+			<p>◆LayerVibrateActionModule    振动动作</p>
+			<p>vibration    振动量(pixel)<br>
+			  waittime    振动间隔时间(ms)</p>
+			<p>◆LayerJumpActionModule    上下振动动作</p>
+			<p>vibration    上下振动量(pixel)<br>
+			  cycle        周期(ms)</p>
+			<p>◆LayerJumpOnceActionModule    上下振动动作（一次）</p>
+			<p>vibration    上下振动量(pixel)<br>
+			  cycle        周期(ms)</p>
+			<p>◆LayerWaveActionModule     左右振动动作</p>
+			<p>vibration    左右振动量(pixel)<br>
+			  cycle        周期(ms)</p>
+			<p>◆LayerWaveOnceActionModule     左右振动动作（一次）</p>
+			<p>vibration    左右振动量(pixel)<br>
+			  cycle        周期(ms)</p>
+			<p>◆LayerFallActionModule        落下动作</p>
+			<p>distance    落下距離(pixel)<br>
+			  falltime    落下时间(ms)</p>
+			<p>◇放大，缩小动作组</p>
+			<p>◆共通属性</p>
+			<p>无</p>
+			<p>◆LayerNormalZoomModule        简单放大</p>
+			<p>zoom    最后的放大率（纵横放大比例不同的情况没有加入）</p>
+			<p>◆LayerVRotateZoomModule    使用放大缩小效果造成的伪3D回转（纵轴）</p>
+			<p>angvel    旋转的角速度（度/sec）</p>
+			<p>◆LayerHRotateZoomModule    使用放大缩小效果造成的伪3D回转（横轴）</p>
+			<p>angvel    旋转的角速度（度/sec）</p>
+			<p>◆LayerHeartBeatZoomModule    心跳效果</p>
+			<p>zoom    最大放大率</p>
+			<p>◆LayerVibrateZoomModule    缩放震动</p>
+			<p>vibration    振动量(％)<br>
+			  waittime    振动间隔时间(ms)</p>
+			<p>◇旋转动作组</p>
+			<p>◆LayerNormalRotateModule    単純旋转</p>
+			<p>angvel        角速度（度/sec）</p>
+			<p>◆LayerVibrateRotateModule    旋转震动</p>
+			<p>vibration    振幅(度)<br>
+			  cycle        周期(ms)</p>
+			<p>◆LayerFalldownRotateModule        倒转</p>
+			<p>angle    倒转時最大角度（-90～90范围内 正数代表往左、負数代表往右）</p>
+			<p>◆LayerToRotateModule        旋转到指定角度</p>
+			<p>angle    指定角度</p>
+			<p>◇渐变动作组</p>
+			<p>◆LayerBlinkModeModule        闪烁效果</p>
+			<p>showtime    显示时间(ms)<br>
+			  hidetime    消失时间(ms)</p>
+			<p>◆LayerFadeModeModule        渐变动态效果</p>
+			<p>intime        渐入时间  (0的情况下没有渐入效果)<br>
+			  outtime        渐出时间  (0的情况下没有渐出效果)</p>
+			<p>◆LayerFadeToModeModule        改变层的不透明度</p>
+			<p>opacity        不透明度<br>
+		  </p>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html#docchn" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

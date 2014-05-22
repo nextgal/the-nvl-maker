@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3>吉里吉里、KAG与THE NVL Maker</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<img class="deco" src="../sc/krkr_001.jpg"></img>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+	<h3>吉里吉里</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<p class="deco">
+            	吉里吉里，实际上指的是krkr.exe这个文件。<br>
+                当前的最新版本是2.32，可以通过右键EXE查看具体信息。<br>
+                作为一个通用的引擎，吉里吉里可以用于制作各种类型的2D游戏，在加入扩展插件的情况下，甚至可以显示3D画面。<br>
+                吉里吉里会读取TJS语言写成的脚本（.tjs）并执行。
+            </p>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>TJS</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<p class="deco">
+				TJS是一门程序语言，或者你可以将它看成是一套语法规则。<br>
+                按照这套固定的语法规则，你可以指挥吉里吉里去完成各种各样的任务。<br>
+                TJS基本是由类和函数构成的，脚本看起来大概是这个样子：
+            </p>
+            
+            <blockquote>
+                function changeScreenMode(key, shift)<br>
+                {<br>
+                  &nbsp;&nbsp;if (key != VK_RETURN || !(shift & ssAlt))
+                    return false;<br>
+                  &nbsp;&nbsp;if (global.kag.fullScreen)
+                    global.kag.onWindowedMenuItemClick(global.kag);<br>
+                  &nbsp;&nbsp;else
+                    global.kag.onFullScreenMenuItemClick(global.kag);<br>
+                  &nbsp;&nbsp;return true;<br>
+                }<br>
+                // 注册函数<br>
+                kag.keyDownHook.add(changeScreenMode);<br>
+            </blockquote>
+            
+			<p class="deco">
+				不要恐慌╮(╯_╰)╭，大部分时候你连看都不会看到它们。
+            </p>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>KAG</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<p class="deco">
+				虽然可以直接使用TJS语言来写游戏，但是如果只是想写文字冒险游戏的话，还是过于麻烦了。<br>
+              	用于读取.ks文件的KAG系统可以说是专门为文字冒险游戏而准备的。<br>
+                使用KAG系统时，你就可以用简单的指令（TAG）来描述你的游戏逻辑。<br>
+                即使对程序语言完全没有概念的人，学习这些指令也并不太困难。<br>
+                不过KAG可以做到的事，相比TJS就有限得多，主要是集中在文字冒险游戏的“剧情演出”部分。<br>
+                如果要完成一个相对完整的文字冒险游戏，仅使用KAG系统提供的指令还是不够，很多地方需要用到TJS来辅助。<br>
+                KAG提供的指令非常容易分辩，是写在.ks脚本里，由[]括起来或者@开头的一行内容。<br>
+                格式为：
+          </p>
+          <blockquote>
+            	[指令名 属性1=值1 属性2=值2 属性3=值3]<br>
+                或者：<br>
+            	@指令名 属性1=值1 属性2=值2 属性3=值3<br>
+          </blockquote>
+            
+			<p class="deco">
+           		比起TJS来说确实更容易理解了。<br>
+                当然假如你看到满眼的英文指令依然头晕，也没有关系……<br>
+                THE NVL Maker的脚本编辑器会把这些东西翻译成你能看懂的语言的。
+            </p>
+		  <!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>THE NVL Maker</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+                大部分游戏，不管类型如何，都至少包含标题界面、对话界面、存储界面等等基础系统。<br>
+                虽然游戏的美术风格、排版、分辨率等等可以有天翻地覆的变化，但是系统的基础功能确实是大同小异的。<br>
+                实际上，完成过两个以上游戏的吉里吉里/KAG使用者，多少都会意识到这一点。<br>
+                制作新游戏的系统时，开始的大部分时间是在复制粘贴和修改坐标中度过。<br>
+                这个阶段大概要持续一两星期到半个月，一没有学习的乐趣，二没有任何效率。<br>
+                （作者本人在这之前大概写过四到五个完整的文字冒险游戏系统，越到后面感觉越无聊。）<br>
+                那么，为什么不做一套“万用”的系统框架，让制作者可以很快跳过这个无聊的开始，直接进入“创作”阶段？<br>
+            	THE NVL Maker就是基于这样的想法完成的——<br>
+                一套“大部分文字冒险游戏必定会用到的系统框架”，加上一套可视化界面。<br>
+                当然，所谓“必定会用到”只是作者个人的判断而已。如果有任何你觉得同样非常重要的元素，请随意添加修改不要客气~(*´∇｀*) 
+            </p>
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

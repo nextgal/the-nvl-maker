@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3>层的概念</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+			<p class="deco">
+            	这其实是吉里吉里/KAG的概念，并非NVL独有的，但为了更好地理解后面的教程，还是进行一下大致说明。<br>
+                另外，会对NVL游戏工程里的各层结构、功能进行说明。
+            </p>
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+	<h3>层的分类、命名与显示顺序</h3>
+
+ 		 <div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+        <p class="deco">
+            KAG ，或者说吉里吉里的画面，是全部由所谓的「层（layer）」叠起来组成的 ( 和 Photoshop 等软件的层差不多 )。<br>
+            层分成“消息层（文字层）”和“图片层”两种。前者用于显示文字、文字连接[link]和按钮，后者用于显示背景图片、角色图片、界面底板图片等等。<br>
+            消息层的命名方式为“message+数字编号”，而图片层则只需要“数字编号”。<br>
+            这些层的排列具有一定的顺序，例如背景层一定会显示在人物层后面，而人物层又会被对话框所在的消息层挡住一部分。<br>
+            这个显示顺序是由一个数值index指定的，index的数值越大，则显示得越靠前。
+         </p>
+            
+	  <!-- ============ ▲本文　ここまで ============ -->
+
+        </div><!-- /write -->
+            <div class="line"><hr></div>
+            
+	<h3>THE NVL Maker游戏工程的层结构</h3>
+
+  <div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+
+        <p class="deco">   
+            在NVL游戏工程里，层的数量和顺序都是在一开始设定好的，并且大部分层都有专门的用途。<br>
+            这些设定被放在nvl/macro.ks里，详细请见下。（背景层为最靠后，图层0在背景层之前，以此类推。）
+          </p>
+        <dl>
+		<dt class="deco">背景和角色层</dt>
+        <dd>
+          <ul>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">stage——KAGEX的背景层，用来替代KAG3传统的base层，支持各种动态特效</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">0——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">1——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">2——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">3——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">4——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">5——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">6——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">7——角色图片层</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">event——预留</li>
+          </ul>
+        </dd>
+		</dl>
+           
+        <dl>
+		<dt class="deco">一级界面：对话框、头像、系统按钮、选择相关</dt>
+        <dd>
+          <ul>
+              <li><img src="../sc/icon_message.png" width="22" height="21">message0——对话框、全屏框、透明框、标题画面按钮</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">8——头像图片层，点下右键时，这个图层会随对话框一起隐藏</li>
+              <br>
+              <li><img src="../sc/icon_message.png" width="22" height="21">message1——用于显示选项按钮</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">9——预留</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">10——预留</li>
+              <li><img src="../sc/icon_message.png" width="22" height="21">message2——用于显示对话画面上设定的系统按钮，点下右键时，系统按钮会随对话框一起隐藏</li>
+          </ul>
+        </dd>
+		</dl>
+        
+		<p class="deco">
+			3.70开始，将地图与养成面板使用的图层顺序进行了调整，不再与选择按钮共用图层。
+        </p>
+                  
+        <dl>
+		<dt class="deco">二级界面:地图、养成面板、自制界面用</dt>
+        <dd>
+          <ul>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">11——用于显示地图和养成面板的背景板（CG收集和BGM鉴赏背景也是这个图层）</li>
+              <li><img src="../sc/icon_message.png" width="22" height="21">message3——用于显示选项、地图画面和养成面板的按钮</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">12——用于显示养成面板的图形文字、数值等</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">13——地图、养成面板的悬停图片默认将显示在这一层</li>
+          </ul>
+        </dd>
+		</dl>
+        
+		<p class="deco">
+        	NVL的界面框架，基本都是由界面背景图（底板），消息层（按钮等），以及上方的1~3层图片层构成。<br>
+            其中11-13号图层，以及message3是给自制界面预留的层。<br>
+            可以使用地图、养成面板来自制界面，或者完全自己重写。
+        </p>
+        
+        <dl>
+		<dt class="deco">三级界面：主选单、存储、读取、系统设定等</dt>
+        <dd>
+          <ul>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">14——用于显示系统菜单背景图</li>
+              <li><img src="../sc/icon_message.png" width="22" height="21">message4——用于显示系统菜单的按钮、滑动槽等</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">15——用于显示系统设定画面高亮效果、存取按钮新档标记、存取按钮上的截图</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">16——用于显示存取画面悬停文字、CG界面的大图</li>
+              <li><img src="../sc/icon_layer.png" width="22" height="21">17——用于显示存取画面悬停截图</li>          
+          </ul>
+        </dd>
+		</dl>
+		<p class="deco">
+            处于同一级的界面会使用相同的几层。<br>
+            例如主选单、存储、读取、系统设定等，都使用了图层14~17，以及message4。
+        </p>
+        
+	  <!-- ============ ▲本文　ここまで ============ -->
+
+	</div><!-- /write -->
+		<div class="line"><hr></div>
+
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3>修改游戏基本设定</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+            	在已经调整了对话框的情况下，是否会觉得白底的对话框和黑底的姓名框，需要配上和原来不同的颜色和文字效果呢。<br>
+                这时候就轮到Config.tjs上场了。<br>
+                Config.tjs是吉里吉里/KAG的基本设定文件，包含了大量可以调整的细节。<br>
+                不过Config.tjs所记录的只是一个默认设置，大部分功能也可以在后来的脚本里修改。<br>
+            	但对于游戏里随时都要用到的东西，例如说字体的默认颜色外观等等，直接修改Config.tjs里的设置会更简单。<br>
+            	总之先来看一下THE NVL Maker为Config.tjs搭配的图形化编辑工具<img src="../sc/tool_exe_01.png" width="140" height="21">。 <br>
+                在“界面设定”分页里，点击“Config.tjs”即可打开这个工具。<br>
+                无法正常执行的情况下，请参考<a href="../download.html">下载运行</a>篇的说明，安装必备框架或更换版本。
+                </p>
+                
+                <img src="../sc/config_start.jpg" width="800" height="544">			
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+	<h3>KAGConfigEX2.exe界面</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+           		可以设置的内容包括以下部分：
+			</p>
+            
+            <ul>
+            <li>全局设定</li>
+            <li>档案与通过记录</li>
+            <li>菜单设定</li>
+            <li>文字层设定</li>
+            <li>字体设定</li>
+            <li>图形与音声设定</li>
+            <li>历史记录设定</li>
+            </ul>
+            
+            <p class="deco">
+            	具体每个部分的详细功能，会在后面的独立教程Config.tjs里讲述，这里仅对如何修改文字样式进行说明。
+            </p>
+            
+            <img src="../sc/config_main.jpg" width="894" height="588">
+            <!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+
+	<h3>字体设定</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+				点下“字体设定”分页以后，可以看到如下图的界面。<br>
+                修改字体、颜色、描边/阴影（请注意描边和阴影同时只能存在一个），文字行间距、字间距等等。<br>
+                这些应该很容易理解。<br>
+                需要注意的是“预渲染文字”和“注音文字”两个部分。<br>
+                预渲染文字是指图形字体包，让游戏可以在任何语言环境下正常显示中文指定字体，通常到打包的时候再设定也来得及。<br>
+                使用方法可以查看后面的教程“预渲染文字（自定义字体）设定”。<br>
+                注音文字是日文游戏里偶尔会使用到的功能，例如在特殊的名词上方标记假名。当然你也可以用它来标记拼音。<br>
+                </p>
+                
+                <img src="../sc/config_font.jpg" width="800" height="544">			
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>修改字体、颜色、描边/阴影</h3>
+
+		<div class="write">
+
+			<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+            	根据对话框的风格，将默认字体修改为你喜欢的字体，这里使用的范例是“文泉驿微米黑”，这是一款不错的开源字体。^ ^<br>
+                接下来将颜色从白色修改为黑色。并去掉描边效果。<br>
+				修改颜色时，0x000000等代表颜色码。0x是开头的标记，后面的00,00,00分别代表红、绿、蓝三种颜色所占的比重。<br>
+                例如0xFF0000，代表纯红色，0x00FF00代表纯绿色。<br>
+                虽然这些颜色码可以在作图软件里查询，不过在THE NVL Maker里只要直接点击输入框右边的按钮，进入颜色选择界面，看着选一个就行了。
+                </p>
+                
+                <img src="../sc/config_font_detail.jpg" width="800" height="544">
+                
+			<p class="deco">
+				设定完毕之后点“保存”，然后关闭KAGConfigEX2.exe。<br>
+                现在可以测试一下游戏了。<br>
+                大致效果应该如下图。
+                </p>
+                <img src="../sc/config_font_done.jpg">	
+                		
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

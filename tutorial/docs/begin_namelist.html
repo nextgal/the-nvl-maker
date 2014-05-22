@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-CN">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-style-type" content="text/css">
+<title>THE NVL Maker</title>
+<link rel="stylesheet" type="text/css" href="../img/style.css">
+</head>
+<body>
+
+<!-- out開始 -->
+<div id="out">
+
+<!-- ============ ▼ダイアリー　ここから ============ -->
+
+	<h3>被遗忘的姓名列表</h3>
+
+		<div class="write">
+			<img src="../sc/editor_name.jpg" width="1366" height="412">
+          	<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+            	看了一些从来没接触过吉里吉里的朋友使用NVL写的游戏，发觉这个功能竟然很少有人使用。<br>
+                很多人会一次次地使用类似
+            </p>
+            
+                <blockquote> 【姓名栏】 名字=XXX 颜色=XXX </blockquote>
+                
+            <p class="deco">   
+                这样的指令来输入对话人的名字和对应的颜色。<br>
+                这样做有什么错误呢，其实完全没错，就是……写上几百个难道不觉得烦么……= =<br>
+                
+                其实NVL提供了简化功能，那就是姓名编辑。<br>
+                只要设置一次名字和颜色，之后就可以直接从下拉菜单里选择这个名字，系统会自动判断并且给这个名字配上对应的颜色。<br>
+                换成脚本来说，就是：
+             </p>
+                
+                <blockquote>@npc id=路人甲 color=0xFFFFFF</blockquote>
+                和 
+                <blockquote>@路人甲</blockquote> 
+                 
+             <p class="deco">
+                这样的差别。——相信大家都会觉得后面那个明显方便很多。<br>
+                总之下面就详细介绍一下这个功能的用法。
+         	 </p>
+			
+			
+           	<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>姓名默认颜色</h3>
+
+ 		 <div class="write">
+			
+          	<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+            	THE NVL Maker的默认人物姓名颜色是黄色，这个设置是可以修改的。<br>
+            	如果想要修改，只需要将“姓名编辑”页里的“默认”颜色改掉就行了。<br>
+                这样当出现姓名时，都会直接显示为同样的颜色，而不需要一次次地指定。<br>
+                例如这里配合对话框姓名的黑底，统一修改为白字。
+   	 		 </p>
+	  		<img src="../sc/namelist_default.jpg" width="800" height="544">
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+	<h3>新增姓名</h3>
+
+ 		 <div class="write">
+			
+          	<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+                对次要角色，例如说只出现一两次的路人，才推荐直接在编辑剧情、输入对话时输入姓名。<br>
+               	而游戏中经常要出场的主要角色，可以预先添加到姓名列表里。<br>
+                新增姓名一共需要填写三个内容。
+   	 		 </p>
+             
+             <ul>
+             <li>简称——例如：彼得。角色的简称，这个称呼将会显示在下拉菜单里等。如果姓名不是很长的话，简称可以和姓名一致。</li>
+             <li>姓名——例如：。彼得·伊里奇·柴科夫斯基。角色的实际姓名，也是显示在姓名栏里的内容。</li>
+             <li>颜色——颜色码，例如：0xFFFFFF。当角色的名字显示在对话姓名栏和历史记录里时，将表示为这个颜色。如果不需要变更颜色，填写和默认颜色一样的颜色码就行了。</li>
+             </ul>
+             
+			<p class="deco">
+				填写完毕之后，点击“新增姓名”，人物就被添加到姓名列表里了。<br>
+                不过在点击“新增姓名”之后，这些内容还没有被记录。需要接着点下“保存并生成宏”，才能真正生效。<br>
+                在离开“姓名编辑”一页时，请记得先点击“保存并生成宏”。
+   	 		 </p>
+             
+             <img src="../sc/namelist_newname.jpg" width="814" height="554">
+
+			<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+
+	<h3>修改既有姓名</h3>
+
+  <div class="write">
+			
+          	<!-- ============ ▼本文　ここから ============ -->
+			<p class="deco">
+				新建工程的列表里，都有一个叫做“nvl娘”的名字。颜色为浅绿色。<br>
+                为了配合现在的范例游戏的对话框姓名背景，统一修改为白色。<br>
+                修改完也请记得保存哟。
+    		</p>
+             
+             <img src="../sc/namelist_edit.jpg" width="814" height="554">
+             
+			<p class="deco">
+				保存之后测试游戏，就可以看到如下图的效果了。原来的浅绿色名字变成了白色。<br>
+   	 		 </p>
+             
+            <img src="../sc/namelist_game.jpg" width="814" height="650">
+<!-- ============ ▲本文　ここまで ============ -->
+
+		</div><!-- /write -->
+		<div class="line"><hr></div>
+        
+        
+        
+<!-- ============ ▲ダイアリー　ここまで ============ -->
+
+
+<!-- footer開始 -->
+<div id="footer">
+		<ul>
+			<li><a href="../tutorial.html" title="返回教程" target="_self">Home</a></li>
+		</ul>
+</div>
+<!-- footer終了 -->
+
+
+</div>
+<!--out終了-->
+
+</body>
+</html>

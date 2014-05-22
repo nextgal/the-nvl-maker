@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>flagname</title>
+<link rel="stylesheet" href="base.css" />
+<style type="text/css">
+body,td,th {
+	font-family: "Open Sans", "Trebuchet MS", Helvetica, sans-serif;
+}
+body {
+	background-color: #f6f7f9;
+}
+</style>
+</head>
+<body><div class="container"><p><img src="http://i257.photobucket.com/albums/hh217/countd2005/banner/banner_nvlmaker.png" alt="NVL LOGO" title=""></p>
+
+<p>本工具为使用吉里吉里/KAG开发的免费开源软件。 <br>
+下载最新版本、疑问、讨论、添加自制游戏、推荐素材等，请访问<a href="http://www.nvlmaker.net/">THE NVL Maker</a>官网。</p>
+
+<hr>
+
+<p><div class="toc"><div class="toc">
+<ul>
+<li><a href="#变数记录">变数记录</a><ul>
+<li><a href="#系统参数">系统参数</a></li>
+<li><a href="#界面相关">界面相关</a><ul>
+<li><a href="#nvl自有配置文件">NVL自有配置文件</a></li>
+<li><a href="#存取系统相关">存取系统相关</a></li>
+<li><a href="#cg鉴赏模式相关">CG鉴赏模式相关</a></li>
+<li><a href="#bgm鉴赏模式相关">BGM鉴赏模式相关</a></li>
+<li><a href="#movepos指令相关">movepos指令相关</a></li>
+<li><a href="#插件相关">插件相关</a></li>
+<li><a href="#其他">其他</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</p>
+
+<hr>
+
+<h1 id="变数记录">变数记录</h1>
+
+<blockquote>
+  <p>这里列出了游戏系统中的相关变数名称和作用，当需要修改系统时可以参考。 <br>
+  为自有变数命名时也请避开这些已有的变数名。</p>
+</blockquote>
+
+<h2 id="系统参数">系统参数</h2>
+
+<blockquote>
+  <p>游戏初始化时所用到的系统变数和默认值。 <br>
+  在系统设置界面对应文件<code>option.ks</code>和<code>macro_ui.ks</code>里也可以找到相关操作。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>类型</th>
+  <th>默认值</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>sf.初始化</code></td>
+  <td>Boolean</td>
+  <td>false</td>
+  <td>当第一次执行游戏，其他数值初始化完毕后，该值被设为true</td>
+</tr>
+<tr>
+  <td><code>sf.cglist</code></td>
+  <td>Dictionary</td>
+  <td>%[]</td>
+  <td>登陆CG时，会将对应CG名的值设为1，可根据<code>sf.cglist['图片名']</code>的值判断这张CG是否已经登陆</td>
+</tr>
+<tr>
+  <td><code>sf.历史</code></td>
+  <td>Array</td>
+  <td>[]</td>
+  <td>每个存档对应的最后一句对话将被保存在对应编号里，例如存档0对应的就是<code>sf.历史[0]</code></td>
+</tr>
+<tr>
+  <td><code>sf.最近存储页</code></td>
+  <td>Int</td>
+  <td>1</td>
+  <td>存档、读取系统翻到的页数，当玩家打开存档、读取界面时，会自动翻到上次打开的页面</td>
+</tr>
+<tr>
+  <td><code>kag.allskip</code></td>
+  <td>Boolean</td>
+  <td>false</td>
+  <td>true-skip时跳过全部/false-skip时只跳过已读</td>
+</tr>
+<tr>
+  <td><code>kag.textspeed</code></td>
+  <td>Int</td>
+  <td>5</td>
+  <td>跳字速度，范围0-10，10为最快（不等待）</td>
+</tr>
+<tr>
+  <td><code>kag.autospeed</code></td>
+  <td>Int</td>
+  <td>5</td>
+  <td>自动前进速度，范围0-10，10为最快（不等待）</td>
+</tr>
+</tbody></table>
+
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>类型</th>
+  <th>默认值</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>sf.语音初始化</code></td>
+  <td>Boolean</td>
+  <td>0</td>
+  <td>当第一次执行游戏，音量相关系统数值初始化完毕后，该值被设为1</td>
+</tr>
+<tr>
+  <td><code>kag.bgmvolume</code></td>
+  <td>Int</td>
+  <td>50</td>
+  <td>音乐音量</td>
+</tr>
+<tr>
+  <td><code>kag.sevolume</code></td>
+  <td>Int</td>
+  <td>100</td>
+  <td>音效总音量（包括一般音效和语音）</td>
+</tr>
+<tr>
+  <td><code>sf.sevolume</code></td>
+  <td>Int</td>
+  <td>50</td>
+  <td>音效音量、因为系统变数kag.se[0].volume不会被保存而额外设置的值</td>
+</tr>
+<tr>
+  <td><code>sf.voicevolume</code></td>
+  <td>Int</td>
+  <td>50</td>
+  <td>语音音量、因为系统变数kag.se<a href="http://i257.photobucket.com/albums/hh217/countd2005/banner/banner_nvlmaker.png">1</a>.volume不会被保存而额外设置的值</td>
+</tr>
+</tbody></table>
+
+
+<h2 id="界面相关">界面相关</h2>
+
+<h3 id="nvl自有配置文件">NVL自有配置文件</h3>
+
+<blockquote>
+  <p>类型均为dictionay或Array，保存位置为macro文件夹下。 <br>
+  <a href="http://www.nvlmaker.net/">THE NVL Maker</a>的编辑器会按照一定格式，将编辑好的界面参数写入这些文件。 <br>
+  而游戏在运行时则通过<code>macro.ks</code>文件载入，读取具体的坐标、图片名、颜色代码等。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>文件</th>
+  <th>对应界面说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>f.setting</code></td>
+  <td>setting.tjs</td>
+  <td>选项按钮</td>
+</tr>
+<tr>
+  <td><code>f.config_title</code></td>
+  <td>uititle.tjs</td>
+  <td>标题画面</td>
+</tr>
+<tr>
+  <td><code>f.config_dia</code></td>
+  <td>uidia.tjs</td>
+  <td>对话界面</td>
+</tr>
+<tr>
+  <td><code>f.config_menu</code></td>
+  <td>uimenu.tjs</td>
+  <td>主选单</td>
+</tr>
+<tr>
+  <td><code>f.config_slpos</code></td>
+  <td>uislpos.tjs</td>
+  <td>存储、读取系统排版</td>
+</tr>
+<tr>
+  <td><code>f.config_option</code></td>
+  <td>uioption.tjs</td>
+  <td>系统设置界面</td>
+</tr>
+<tr>
+  <td><code>f.config_history</code></td>
+  <td>uihistory.tjs</td>
+  <td>历史记录界面</td>
+</tr>
+<tr>
+  <td><code>f.config_name</code></td>
+  <td>namelist.tjs</td>
+  <td>主要人物姓名，包括人物名和颜色代码</td>
+</tr>
+<tr>
+  <td><code>f.config_save</code></td>
+  <td>uisave.tjs</td>
+  <td>存储系统图片</td>
+</tr>
+<tr>
+  <td><code>f.config_load</code></td>
+  <td>uiload.tjs</td>
+  <td>读取系统图片</td>
+</tr>
+<tr>
+  <td><code>f.config_cgmode</code></td>
+  <td>uicgmode.tjs</td>
+  <td>CG鉴赏界面</td>
+</tr>
+</tbody></table>
+
+
+<h3 id="存取系统相关">存取系统相关</h3>
+
+<blockquote>
+  <p>可在<code>save.ks</code>、<code>load.ks</code>、<code>macro_sl.ks</code>与<code>MySaveLoadFunction.tjs</code>内找到相关变数的操作。保存位置为nvl文件夹下。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>类型</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>sf.历史</code></td>
+  <td>Array</td>
+  <td>每个存档对应的最后一句对话将被保存在对应编号里，例如存档0对应的就是<code>sf.历史[0]</code></td>
+</tr>
+<tr>
+  <td><code>sf.最近存储页</code></td>
+  <td>Int</td>
+  <td>存档、读取系统翻到的页数，当玩家打开存档、读取界面时，会自动翻到上次打开的页面</td>
+</tr>
+<tr>
+  <td><code>f.config_sl</code></td>
+  <td>Dictionary</td>
+  <td>当在保存界面时，指向<code>f.config_save</code>，当在读取界面时，指向<code>f.config_load</code>，用于调用对应界面的图片</td>
+</tr>
+<tr>
+  <td><code>tf.最近档案</code></td>
+  <td>Int</td>
+  <td>当点下某个存档或读取按钮时，记录对应的档案编号</td>
+</tr>
+<tr>
+  <td><code>sf.最近档案</code></td>
+  <td>Int</td>
+  <td>当保存成功时，会将最后一次保存的档案编号记录到这里，对应的按钮会显示<code>New!</code>符号</td>
+</tr>
+</tbody></table>
+
+
+<h3 id="cg鉴赏模式相关">CG鉴赏模式相关</h3>
+
+<blockquote>
+  <p>可在<code>cgmode.ks</code>与<code>macro_cg.ks</code>内找到相关变数的操作。保存位置为nvl文件夹下。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>类型</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>sf.cglist</code></td>
+  <td>Dictionary</td>
+  <td>登陆CG时，会将对应CG名的值设为1，可根据<code>sf.cglist['图片名']</code>的值判断这张CG是否已经登陆</td>
+</tr>
+<tr>
+  <td><code>f.cginfo</code></td>
+  <td>String</td>
+  <td>所有要显示的CG文件名列表，默认为<code>cglist.txt</code></td>
+</tr>
+<tr>
+  <td><code>f.cglist</code></td>
+  <td>Array</td>
+  <td>CG缩略图（CG列表内每行第一张CG）的列表，从<code>f.cginfo</code>对应的文件内读取</td>
+</tr>
+<tr>
+  <td><code>tf.CG页数</code></td>
+  <td>Int</td>
+  <td>根据每页可显示的CG数和CG缩略图总数，计算出一共需要翻几页</td>
+</tr>
+<tr>
+  <td><code>tf.当前CG页</code></td>
+  <td>Int</td>
+  <td>当前翻到的CG页数，玩家每次打开CG鉴赏界面时，都会默认翻到第一页</td>
+</tr>
+<tr>
+  <td><code>tf.CG差分</code></td>
+  <td>Array</td>
+  <td>点下CG缩略图按钮时，会取得对应的CG差分（CG列表内同一行的所有CG中已经登陆的）并保存到这个变数内</td>
+</tr>
+<tr>
+  <td><code>tf.CG编号</code></td>
+  <td>Int</td>
+  <td>点下CG缩略图按钮时，接下来要显示的CG编号，每当显示一张编号就增加1，直到<code>tf.CG差分</code>的内容都显示完毕</td>
+</tr>
+<tr>
+  <td><code>tf.当前CG</code></td>
+  <td>String</td>
+  <td>根据<code>tf.CG差分</code>和<code>tf.CG编号</code>取得的将要显示的CG图片文件名</td>
+</tr>
+</tbody></table>
+
+
+<h3 id="bgm鉴赏模式相关">BGM鉴赏模式相关</h3>
+
+<blockquote>
+  <p>可在<code>bgm.ks</code>与<code>macro_bgm.ks</code>内找到相关变数的操作。保存位置为nvl文件夹下。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>类型</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>f.bgmlist</code></td>
+  <td>Array</td>
+  <td>读取<code>bgmlist.txt</code>的内容，取得曲目名和对应的音乐文件名</td>
+</tr>
+<tr>
+  <td><code>f.bgmnump</code></td>
+  <td>Int</td>
+  <td>音乐鉴赏模式每页显示的曲目数，默认为12，分成两栏，左右各6首</td>
+</tr>
+<tr>
+  <td><code>tf.BGM页数</code></td>
+  <td>Int</td>
+  <td>根据每页可显示的曲目数和<code>bgmlist.txt</code>内的曲目总数，计算出一共需要翻几页</td>
+</tr>
+<tr>
+  <td><code>tf.当前BGM页</code></td>
+  <td>Int</td>
+  <td>当前翻到的BGM页数，玩家每次打开BGM鉴赏界面时，都会默认翻到第一页</td>
+</tr>
+<tr>
+  <td><code>tf.当前BGM</code></td>
+  <td>String</td>
+  <td>当点下曲目按钮时，取得对应播放的音乐文件名</td>
+</tr>
+</tbody></table>
+
+
+<h3 id="movepos指令相关">movepos指令相关</h3>
+
+<blockquote>
+  <p>位置为<code>nvl/macro_play.ks</code>。 <br>
+  相比原版的移动指令<code>[move]</code>，这个自定义指令会取得当前图片所在的位置，然后进行相对移动，因此用到了很多临时变数。 <br>
+  <strong>注：</strong><code>[move]</code>是不管图片在哪，都移动到指定坐标，而<code>[movepos]</code>可以做出“从现在的位置向左移动20像素”这样的效果。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>tf.layer</code></td>
+  <td>移动的图层名</td>
+</tr>
+<tr>
+  <td><code>tf.left</code></td>
+  <td>图层现在的位置</td>
+</tr>
+<tr>
+  <td><code>tf.top</code></td>
+  <td>图层现在的位置</td>
+</tr>
+<tr>
+  <td><code>tf.oop</code></td>
+  <td>图层现在的透明度</td>
+</tr>
+<tr>
+  <td><code>tf.x</code></td>
+  <td>横向移动的值，默认为0（不移动）</td>
+</tr>
+<tr>
+  <td><code>tf.y</code></td>
+  <td>纵向移动的值，默认为0（不移动）</td>
+</tr>
+<tr>
+  <td><code>tf.opacity</code></td>
+  <td>透明度的值，默认和图层现在的透明度相同（不改变）</td>
+</tr>
+<tr>
+  <td><code>tf.x2</code></td>
+  <td>由tf.left和tf.x计算出的图片将要移动到的坐标</td>
+</tr>
+<tr>
+  <td><code>tf.y2</code></td>
+  <td>由tf.top和tf.y计算出的图片将要移动到的坐标</td>
+</tr>
+<tr>
+  <td><code>tf.path</code></td>
+  <td>由tf.x2、tf.y2和tf.opacity组成的移动路径</td>
+</tr>
+</tbody></table>
+
+
+<h3 id="插件相关">插件相关</h3>
+
+<blockquote>
+  <p>为了保证插件效果能够正常保存读取而使用到的记录变数。</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>所在文件</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>f.rains</td>
+  <td>rain.ks</td>
+  <td>下雨粒子效果</td>
+</tr>
+<tr>
+  <td>f.snows</td>
+  <td>snow.ks</td>
+  <td>下雪粒子效果</td>
+</tr>
+<tr>
+  <td>f.sakuras</td>
+  <td>sakura.ks</td>
+  <td>樱花粒子效果</td>
+</tr>
+<tr>
+  <td>f.momijis</td>
+  <td>momiji.ks</td>
+  <td>红叶粒子效果</td>
+</tr>
+<tr>
+  <td>f.fireflys</td>
+  <td>firefly.ks</td>
+  <td>萤火虫粒子效果</td>
+</tr>
+<tr>
+  <td>f.noises</td>
+  <td>oldMovie.ks</td>
+  <td>旧电影效果</td>
+</tr>
+<tr>
+  <td>f.pnoises</td>
+  <td>oldMovie.ks</td>
+  <td>旧电影效果</td>
+</tr>
+<tr>
+  <td>f.fogs</td>
+  <td>fog.ks</td>
+  <td>雾气效果</td>
+</tr>
+</tbody></table>
+<h3 id="其他">其他</h3>
+
+<table>
+<thead>
+<tr>
+  <th>变数名</th>
+  <th>类型</th>
+  <th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>f.姓</code></td>
+  <td>String</td>
+  <td>主角姓氏，当有内容时，调用<code>[主角]</code>指令就会显示成<strong>【姓名】</strong>格式</td>
+</tr>
+<tr>
+  <td><code>f.名</code></td>
+  <td>String</td>
+  <td>主角名字，当有内容时，调用<code>[主角]</code>指令就会显示成<strong>【姓名】</strong>格式</td>
+</tr>
+<tr>
+  <td><code>tf.clicked</code></td>
+  <td>Int</td>
+  <td>记录上次点击鼠标左键的时间，判断点击间隔，避免左键点击显示对话框时，再次戳到隐藏对话框按钮</td>
+</tr>
+</tbody></table>
+
+
+<blockquote>
+  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
+</blockquote></div></body>
+</html>
