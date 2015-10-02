@@ -1,6 +1,6 @@
 -使用本模板制作出来的游戏或其他作品-
 
-必须署名：使用THE NVL Maker（基于吉里吉里/KAG）制作 http://www.nvlmaker.net/
+必须署名：使用THE NVL Maker制作 http://www.nvlmaker.net/
 
 无须开源：对《THE NVL Maker》编辑器所做的修改和二次发布必须开源，游戏则无此规定
 
@@ -23,7 +23,9 @@
 
 背景：『きまぐれアフター.』http://www5d.biglobe.ne.jp/~gakai/
 
-人物：『ComiPo!』http://www.comipo.com/en/index.html
+人物：33 http://www.weibo.com/u/1822190713
+
+CG：『ComiPo!』http://www.comipo.com/en/index.html
 
 音乐：『Pianos DauGe』http://pianosdauge.org/BGM/list.html
 
