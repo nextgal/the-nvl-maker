@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectFile>
+  <Name>TemplateEX2</Name>
+  <DataPath>Data</DataPath>
+  <ExePath>krkr.eXe</ExePath>
+  <ExeArgv />
+  <Type>Kagexpp</Type>
+</ProjectFile>
