@@ -23,12 +23,12 @@
 
 背景：『きまぐれアフター.』http://www5d.biglobe.ne.jp/~gakai/
 
-人物：33 http://www.weibo.com/u/1822190713
+界面：被炒的炒饭
 
-CG：『ComiPo!』http://www.comipo.com/en/index.html
+人物：33
 
 音乐：『Pianos DauGe』http://pianosdauge.org/BGM/list.html
 
 音效：『回斩梦廊』http://kaizanmurou.main.jp/
 
-按钮：『PIECE2003』http://piece2003.com/
+按钮：『智之ソフト』http://b.dlsite.net/RG39259/
